@@ -117,7 +117,7 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs text-white/55 sm:flex-row">
-          <div>© 2025 ABC Construction. All Rights Reserved.</div>
+          <div>© 2026 Ronit Singha Developer. All Rights Reserved.</div>
           <div className="text-white/45">Designed for credibility & performance.</div>
         </div>
       </div>
