@@ -14,7 +14,7 @@ export function About() {
             <div className="relative overflow-hidden rounded-2xl border border-orange-400/30">
               <div className="absolute inset-0 ring-1 ring-white/10" />
               <img
-                src="https://picsum.photos/seed/abc-about/900/900"
+                src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80"
                 alt="Construction site"
                 className="h-[520px] w-full object-cover"
                 loading="lazy"

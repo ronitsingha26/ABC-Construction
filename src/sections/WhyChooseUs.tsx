@@ -69,7 +69,7 @@ export function WhyChooseUs() {
           <ScrollReveal className="relative mx-auto w-full max-w-md" y={18}>
             <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-[0_30px_120px_rgba(0,0,0,0.45)]">
               <img
-                src="https://picsum.photos/seed/abc-why/900/1200"
+                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80"
                 alt="Construction quality"
                 loading="lazy"
                 className="h-[560px] w-full object-cover"

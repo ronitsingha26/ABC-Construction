@@ -27,42 +27,48 @@ const projects: Project[] = [
     location: 'Mumbai',
     category: 'Residential',
     status: 'Completed',
-    image: 'https://picsum.photos/seed/skyline-towers/900/700',
+    image:
+      'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1200&q=80',
   },
   {
     name: 'TechPark Hub',
     location: 'Pune',
     category: 'Commercial',
     status: 'Completed',
-    image: 'https://picsum.photos/seed/techpark-hub/900/780',
+    image:
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
   },
   {
     name: 'NH-44 Highway Extension',
     location: 'Pan India',
     category: 'Infrastructure',
     status: 'Ongoing',
-    image: 'https://picsum.photos/seed/nh44/900/820',
+    image:
+      'https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=1200&q=80',
   },
   {
     name: 'GreenVilla Apartments',
     location: 'Bangalore',
     category: 'Residential',
     status: 'Completed',
-    image: 'https://picsum.photos/seed/greenvilla/900/760',
+    image:
+      'https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80',
   },
   {
     name: 'Aurora Industrial Park',
     location: 'Chennai',
     category: 'Industrial',
     status: 'Completed',
-    image: 'https://picsum.photos/seed/aurora-industrial/900/740',
+    image:
+      'https://images.unsplash.com/photo-1581093458791-9f3c3250f2c5?auto=format&fit=crop&w=1200&q=80',
   },
   {
     name: 'City Mall Complex',
     location: 'Hyderabad',
     category: 'Commercial',
     status: 'Ongoing',
-    image: 'https://picsum.photos/seed/city-mall/900/800',
+    image:
+      'https://images.unsplash.com/photo-1481026469463-66327c86e544?auto=format&fit=crop&w=1200&q=80',
   },
 ]
 
@@ -139,7 +145,11 @@ export function ProjectsShowcase() {
                   <img
                     src={p.image}
                     alt={`${p.name} — ${p.location}`}
-                    className="h-auto w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        'https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    }}
+                    className="aspect-[4/3] h-full w-full bg-slate-900/70 object-cover transition duration-700 group-hover:scale-[1.04]"
                     loading="lazy"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent opacity-70 transition group-hover:opacity-90" />

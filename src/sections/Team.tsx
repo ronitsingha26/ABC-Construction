@@ -3,10 +3,38 @@ import { Link as LinkIcon } from 'lucide-react'
 import { SectionHeading } from '../components/SectionHeading'
 
 const members = [
-  { name: 'Rajesh Sharma', role: 'Founder & CEO', exp: '20 yrs', city: 'Patna' },
-  { name: 'Priya Mehta', role: 'Chief Architect', exp: '15 yrs', city: 'Mumbai' },
-  { name: 'Anil Kumar', role: 'Project Director', exp: '12 yrs', city: 'Pune' },
-  { name: 'Sunita Rao', role: 'Finance Head', exp: '10 yrs', city: 'Bangalore' },
+  {
+    name: 'Rajesh Sharma',
+    role: 'Founder & CEO',
+    exp: '20 yrs',
+    city: 'Patna',
+    image:
+      'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    name: 'Priya Mehta',
+    role: 'Chief Architect',
+    exp: '15 yrs',
+    city: 'Mumbai',
+    image:
+      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    name: 'Anil Kumar',
+    role: 'Project Director',
+    exp: '12 yrs',
+    city: 'Pune',
+    image:
+      'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=400&q=80',
+  },
+  {
+    name: 'Sunita Rao',
+    role: 'Finance Head',
+    exp: '10 yrs',
+    city: 'Bangalore',
+    image:
+      'https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=400&q=80',
+  },
 ] as const
 
 export function Team() {
@@ -42,9 +70,7 @@ export function Team() {
 
               <div className="flex items-start justify-between gap-4">
                 <img
-                  src={`https://ui-avatars.com/api/?name=${encodeURIComponent(
-                    m.name,
-                  )}&background=0F172A&color=F8FAFC&size=128&bold=true`}
+                  src={m.image}
                   alt={m.name}
                   className="h-14 w-14 rounded-2xl border border-white/10"
                   loading="lazy"
