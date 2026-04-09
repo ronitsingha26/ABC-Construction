@@ -1,30 +1,7 @@
-import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, ChevronDown } from 'lucide-react'
-import { useMemo, useRef } from 'react'
+import { useRef } from 'react'
 import heroBg from '../assets/hero-bg.png'
-
-function Stat({ value, label }: { value: number; label: string }) {
-  const ref = useRef<HTMLDivElement | null>(null)
-  const inView = useInView(ref, { once: true, margin: '-20% 0px -20% 0px' })
-  const display = useMemo(() => (inView ? value : 0), [inView, value])
-
-  return (
-    <div ref={ref} className="flex flex-col items-center gap-1 px-3 py-3">
-      <motion.div
-        initial={{ opacity: 0, y: 6 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.45, ease: 'easeOut' }}
-        className="font-heading text-2xl font-extrabold text-white"
-      >
-        {display}
-        {label === 'Projects' || label === 'Years' || label === 'Clients'
-          ? '+'
-          : ''}
-      </motion.div>
-      <div className="text-xs font-semibold text-white/70">{label}</div>
-    </div>
-  )
-}
 
 export function Hero() {
   const heroRef = useRef<HTMLElement | null>(null)
@@ -57,10 +34,13 @@ export function Hero() {
           src={heroBg}
           alt=""
           className="h-full w-full object-cover"
+          loading="eager"
+          decoding="async"
           style={{ y: bgY, willChange: 'transform' }}
         />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent" />
+        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
         <motion.div
           aria-hidden="true"
           className="absolute -left-28 -top-28 h-[420px] w-[420px] rounded-full bg-orange-500/25 blur-3xl"
@@ -105,7 +85,7 @@ export function Hero() {
                     </h1>
                   )}
                   {l.kind === 'body' && (
-                    <p className="mt-6 text-base leading-relaxed text-slate-300 sm:text-lg">
+                    <p className="mt-6 text-base leading-relaxed text-slate-200/90 sm:text-lg">
                       {l.text}
                     </p>
                   )}
@@ -125,7 +105,10 @@ export function Hero() {
               </motion.a>
 
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                <a href="#contact" className="btn btn-outline px-7 hover:bg-white hover:text-black">
+                <a
+                  href="#contact"
+                  className="btn btn-outline px-7 border-white/25 bg-white/5 text-white/90 backdrop-blur hover:bg-white/10 hover:text-white"
+                >
                   Get a Free Quote
                 </a>
               </motion.div>
@@ -144,24 +127,6 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* floating stat bar */}
-        <div className="absolute inset-x-0 bottom-0 translate-y-1/2">
-          <div className="container-page">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45, duration: 0.65, ease: 'easeOut' }}
-              className="mx-auto flex max-w-4xl flex-col items-stretch justify-between gap-2 rounded-2xl border border-white/15 bg-white/10 px-2 py-2 backdrop-blur md:flex-row md:gap-0 md:px-4"
-            >
-              <div className="grid w-full grid-cols-2 divide-y divide-white/10 md:grid-cols-4 md:divide-x md:divide-y-0">
-                <Stat value={200} label="Projects" />
-                <Stat value={18} label="Years" />
-                <Stat value={500} label="Clients" />
-                <Stat value={12} label="Cities" />
-              </div>
-            </motion.div>
-          </div>
-        </div>
       </div>
     </section>
   )

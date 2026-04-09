@@ -11,24 +11,16 @@ import { ProcessTimeline } from '../sections/ProcessTimeline'
 import { CTABanner } from '../sections/CTABanner'
 import { Contact } from '../sections/Contact'
 import { Footer } from '../sections/Footer'
-import { useEffect } from 'react'
-import { applyThemeTemporary } from '../lib/theme'
+import { ThemeLock } from '../components/ThemeLock'
 
 export function LandingPage() {
-  useEffect(() => {
-    const prev = document.documentElement.dataset.theme
-    applyThemeTemporary('dark')
-    return () => {
-      applyThemeTemporary(prev === 'light' ? 'light' : 'dark')
-    }
-  }, [])
-
   return (
     <div className="bg-bg text-text">
+      <ThemeLock theme="dark" />
       <Navbar />
       <main>
         <Hero />
-        <div className="h-20" />
+        <div className="h-10 sm:h-12" />
         <About />
         <Services />
         <ProjectsShowcase />

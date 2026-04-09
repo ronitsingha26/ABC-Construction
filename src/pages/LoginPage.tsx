@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import { Link, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import heroBg from '../assets/hero-bg.png'
-import { applyThemeTemporary } from '../lib/theme'
+import { ThemeLock } from '../components/ThemeLock'
 import { usePortalAuth } from '../portal/auth'
 
 export function LoginPage() {
@@ -11,16 +11,9 @@ export function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  useEffect(() => {
-    const prev = document.documentElement.dataset.theme
-    applyThemeTemporary('dark')
-    return () => {
-      applyThemeTemporary(prev === 'light' ? 'light' : 'dark')
-    }
-  }, [])
-
   return (
     <div className="min-h-screen bg-bg">
+      <ThemeLock theme="dark" />
       <div className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0">
           <motion.img
