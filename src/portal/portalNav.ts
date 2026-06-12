@@ -2,7 +2,6 @@ import {
   Activity,
   BarChart3,
   BriefcaseBusiness,
-  Building2,
   CreditCard,
   HardHat,
   Package,
@@ -62,12 +61,7 @@ export const portalNav: PortalNavItem[] = [
     Icon: BriefcaseBusiness,
     roles: ['Owner', 'Project Manager', 'Accounts'],
   },
-  {
-    label: 'Vendors',
-    to: '/portal/vendors',
-    Icon: Building2,
-    roles: ['Owner', 'Project Manager', 'Accounts'],
-  },
+
   {
     label: 'Reports',
     to: '/portal/reports',

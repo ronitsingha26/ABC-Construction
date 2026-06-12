@@ -552,7 +552,17 @@ function normalizeState(s: StoreState): StoreState {
   const projects = Array.isArray(s.projects) ? s.projects : seedState.projects
   const clients = Array.isArray(s.clients) ? s.clients : seedState.clients
   const vendors = Array.isArray(s.vendors) ? s.vendors : seedState.vendors
-  const employees = Array.isArray(s.employees) ? s.employees : seedState.employees
+  const employees = (Array.isArray(s.employees) ? s.employees : seedState.employees).map((e, idx) => {
+    if (!e.employeeId) {
+      return {
+        ...e,
+        employeeId: e.id && e.id.startsWith('e_')
+          ? `EMP-${e.id.slice(2).toUpperCase()}`
+          : `EMP-${String(1000 + idx).padStart(4, '0')}`,
+      }
+    }
+    return e
+  })
   const materials = Array.isArray(s.materials) ? s.materials : seedState.materials
   const inventoryRequests = Array.isArray(s.inventoryRequests)
     ? s.inventoryRequests

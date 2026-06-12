@@ -158,17 +158,22 @@ export function Modal({
 }) {
   useEffect(() => {
     if (!open) return
+    const originalOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
     }
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = originalOverflow
+      window.removeEventListener('keydown', onKey)
+    }
   }, [open, onClose])
 
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
       <button
         type="button"
         className="absolute inset-0 bg-black/60"
@@ -179,23 +184,23 @@ export function Modal({
         initial={{ opacity: 0, y: 14, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.22, ease: 'easeOut' }}
-        className="absolute left-1/2 top-1/2 w-[94vw] max-w-2xl -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border border-border bg-card shadow-[0_30px_140px_rgba(0,0,0,0.35)]"
+        className="relative flex w-full max-w-2xl max-h-[90vh] flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-[0_30px_140px_rgba(0,0,0,0.35)]"
       >
-        <div className="flex items-center justify-between border-b border-border px-6 py-4">
+        <div className="flex shrink-0 items-center justify-between border-b border-border px-6 py-4">
           <div className="font-heading text-lg font-extrabold text-text">
             {title}
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-bg/60 text-text/80 transition hover:bg-bg hover:text-text"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-bg/60 text-text/80 transition hover:bg-bg hover:text-text"
             aria-label="Close modal"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
-        <div className="max-h-[70vh] overflow-auto px-6 py-5">{children}</div>
-        {footer && <div className="border-t border-border px-6 py-4">{footer}</div>}
+        <div className="flex-1 overflow-y-auto px-6 py-5 min-h-0">{children}</div>
+        {footer && <div className="shrink-0 border-t border-border px-6 py-4">{footer}</div>}
       </motion.div>
     </div>
   )

@@ -39,12 +39,7 @@ const ClientsPage = lazy(() =>
 const ClientDetailPage = lazy(() =>
   import('./portal/pages/ClientDetailPage.tsx').then((m) => ({ default: m.ClientDetailPage })),
 )
-const VendorsPage = lazy(() =>
-  import('./portal/pages/VendorsPage.tsx').then((m) => ({ default: m.VendorsPage })),
-)
-const VendorDetailPage = lazy(() =>
-  import('./portal/pages/VendorDetailPage.tsx').then((m) => ({ default: m.VendorDetailPage })),
-)
+
 const ReportsPage = lazy(() =>
   import('./portal/pages/ReportsPage.tsx').then((m) => ({ default: m.ReportsPage })),
 )
@@ -54,10 +49,11 @@ const SettingsPage = lazy(() =>
 
 function App() {
   const location = useLocation()
+  const isPortal = location.pathname.startsWith('/portal')
 
   return (
     <div className="min-h-screen bg-bg">
-      <SmoothScroll />
+      {!isPortal && <SmoothScroll />}
       <ScrollProgressBar />
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
@@ -163,22 +159,7 @@ function App() {
                   </RequireRole>
                 }
               />
-              <Route
-                path="vendors"
-                element={
-                  <RequireRole roles={['Owner', 'Project Manager', 'Accounts']}>
-                    <VendorsPage />
-                  </RequireRole>
-                }
-              />
-              <Route
-                path="vendors/:id"
-                element={
-                  <RequireRole roles={['Owner', 'Project Manager', 'Accounts']}>
-                    <VendorDetailPage />
-                  </RequireRole>
-                }
-              />
+
               <Route
                 path="reports"
                 element={

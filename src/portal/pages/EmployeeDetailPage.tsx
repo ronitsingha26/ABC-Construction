@@ -58,30 +58,7 @@ export function EmployeeDetailPage() {
         name,
       )}&background=0F172A&color=F8FAFC&size=140&bold=true`
     )
-  }, [emp?.name])
-
-  if (!emp) {
-    return (
-      <div className="space-y-4">
-        <Link
-          to="/portal/employees"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-white/70 hover:text-white"
-        >
-          <ArrowLeft className="h-4 w-4" /> Back to Employees
-        </Link>
-        <EmptyState title="Employee not found" subtitle="This profile may have been removed." />
-      </div>
-    )
-  }
-
-  const month = generateMonth(
-    emp.employeeId.split('-')[1] ? Number(emp.employeeId.split('-')[1]) : 42,
-    ym,
-  )
-
-  const assigned = emp.assignedProjectId
-    ? store.projects.find((p) => p.id === emp.assignedProjectId)
-    : null
+  }, [emp?.name, emp?.photoDataUrl])
 
   const payrollRows: EmployeePayrollRow[] = useMemo(() => {
     // dummy last 6 months
@@ -93,6 +70,7 @@ export function EmployeeDetailPage() {
       '2025-05',
       '2025-06',
     ]
+    if (!emp) return []
     const monthlyBasic =
       emp.salaryType === 'Monthly' ? emp.salaryAmountRupees : emp.salaryAmountRupees * 26
     return base
@@ -111,7 +89,35 @@ export function EmployeeDetailPage() {
         } as EmployeePayrollRow
       })
       .slice(0, 6)
-  }, [emp.salaryAmountRupees, emp.salaryType])
+  }, [emp])
+
+  if (!emp) {
+    return (
+      <div className="space-y-4">
+        <Link
+          to="/portal/employees"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-white/70 hover:text-white"
+        >
+          <ArrowLeft className="h-4 w-4" /> Back to Employees
+        </Link>
+        <EmptyState title="Employee not found" subtitle="This profile may have been removed." />
+      </div>
+    )
+  }
+
+  const empIdSuffix = emp.employeeId && emp.employeeId.includes('-')
+    ? emp.employeeId.split('-')[1]
+    : null
+  const seedVal = empIdSuffix && !isNaN(Number(empIdSuffix)) ? Number(empIdSuffix) : 42
+
+  const month = generateMonth(
+    seedVal,
+    ym,
+  )
+
+  const assigned = emp.assignedProjectId
+    ? store.projects.find((p) => p.id === emp.assignedProjectId)
+    : null
 
   return (
     <div className="space-y-6">
@@ -127,7 +133,7 @@ export function EmployeeDetailPage() {
             {emp.name}
           </div>
           <div className="mt-1 text-sm text-white/60">
-            {emp.role} • {emp.employeeId}
+            {emp.role} • {emp.employeeId || 'N/A'}
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -142,7 +148,7 @@ export function EmployeeDetailPage() {
             <div>
               <div className="text-lg font-extrabold text-white">{emp.name}</div>
               <div className="mt-1 text-sm text-white/60">{emp.role}</div>
-              <div className="mt-1 text-xs font-semibold text-white/45">{emp.employeeId}</div>
+              <div className="mt-1 text-xs font-semibold text-white/45">{emp.employeeId || 'N/A'}</div>
             </div>
           </div>
 

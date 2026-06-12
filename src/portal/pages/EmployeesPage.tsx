@@ -42,7 +42,7 @@ export function EmployeesPage() {
         return (
           e.name.toLowerCase().includes(needle) ||
           e.role.toLowerCase().includes(needle) ||
-          e.employeeId.toLowerCase().includes(needle) ||
+          (e.employeeId || '').toLowerCase().includes(needle) ||
           (e.assignedProjectId ? (projects.find((p) => p.id === e.assignedProjectId)?.name ?? '').toLowerCase().includes(needle) : false)
         )
       })
