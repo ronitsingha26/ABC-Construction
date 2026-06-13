@@ -68,8 +68,8 @@ export function ClientDetailPage() {
     return (
       <div className="space-y-6">
         <PortalCard>
-          <div className="font-heading text-2xl font-extrabold text-white">Client Profile</div>
-          <div className="mt-1 text-sm text-white/60">Client not found.</div>
+          <div className="font-heading text-2xl font-extrabold text-text">Client Profile</div>
+          <div className="mt-1 text-sm text-muted">Client not found.</div>
           <div className="mt-4">
             <Link to="/portal/clients">
               <PortalButton variant="outline">Back to Clients</PortalButton>
@@ -85,19 +85,19 @@ export function ClientDetailPage() {
     <div className="space-y-6">
       <PortalCard className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <div>
-          <div className="text-xs font-semibold text-white/55">Client Profile</div>
-          <div className="mt-1 font-heading text-2xl font-extrabold text-white">{client.name}</div>
-          <div className="mt-2 text-sm text-white/65">
+          <div className="text-xs font-semibold text-muted">Client Profile</div>
+          <div className="mt-1 font-heading text-2xl font-extrabold text-text">{client.name}</div>
+          <div className="mt-2 text-sm text-muted">
             {client.contactPerson ? (
               <>
-                <span className="font-semibold text-white/85">{client.contactPerson}</span> • {client.phone}
+                <span className="font-semibold text-text">{client.contactPerson}</span> • {client.phone}
               </>
             ) : (
               client.phone
             )}
           </div>
-          <div className="mt-1 text-sm text-white/55">{client.email}</div>
-          <div className="mt-3 text-xs font-semibold text-white/45">
+          <div className="mt-1 text-sm text-muted">{client.email}</div>
+          <div className="mt-3 text-xs font-semibold text-muted">
             {client.address ? `${client.address} • ` : ''}
             {client.city}
             {client.gstin ? ` • GSTIN: ${client.gstin}` : ''}
@@ -132,7 +132,7 @@ export function ClientDetailPage() {
                 'rounded-full px-4 py-2 text-sm font-semibold transition',
                 tab === t.id
                   ? 'bg-orange-500 text-slate-950'
-                  : 'border border-white/10 bg-white/5 text-white/75 hover:bg-white/10',
+                  : 'border border-border bg-card hover:bg-slate-50 text-text/75 hover:bg-slate-100',
               ].join(' ')}
             >
               {t.label}
@@ -147,7 +147,7 @@ export function ClientDetailPage() {
         ) : (
           <TableShell>
             <table className="w-full text-left text-sm">
-              <thead className="bg-white/5 text-xs font-bold text-white/60">
+              <thead className="bg-card hover:bg-slate-50 text-xs font-bold text-muted">
                 <tr>
                   <th className="px-5 py-3">Project</th>
                   <th className="px-5 py-3">City</th>
@@ -156,10 +156,10 @@ export function ClientDetailPage() {
                   <th className="px-5 py-3 text-right">Progress</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/10">
+              <tbody className="divide-y divide-border">
                 {clientProjects.map((p) => (
-                  <tr key={p.id} className="text-white/80">
-                    <td className="px-5 py-4 font-extrabold text-white">{p.name}</td>
+                  <tr key={p.id} className="text-secondary">
+                    <td className="px-5 py-4 font-extrabold text-text">{p.name}</td>
                     <td className="px-5 py-4">{p.city}</td>
                     <td className="px-5 py-4">
                       ₹{new Intl.NumberFormat('en-IN', { maximumFractionDigits: 0 }).format(p.budgetRupees)}
@@ -167,7 +167,7 @@ export function ClientDetailPage() {
                     <td className="px-5 py-4">
                       <Badge tone={toneForStatus(p.status)}>{p.status}</Badge>
                     </td>
-                    <td className="px-5 py-4 text-right font-extrabold text-white">{p.progress}%</td>
+                    <td className="px-5 py-4 text-right font-extrabold text-text">{p.progress}%</td>
                   </tr>
                 ))}
               </tbody>
@@ -178,8 +178,8 @@ export function ClientDetailPage() {
 
       {tab === 'payments' && (
         <PortalCard>
-          <div className="font-heading text-lg font-extrabold text-white">Payment History</div>
-          <div className="mt-1 text-xs font-semibold text-white/55">Latest 12 events</div>
+          <div className="font-heading text-lg font-extrabold text-text">Payment History</div>
+          <div className="mt-1 text-xs font-semibold text-muted">Latest 12 events</div>
           <div className="mt-5 space-y-3">
             {payments.length === 0 ? (
               <EmptyState title="No payments" subtitle="No invoices or income transactions found for this client yet." />
@@ -187,7 +187,7 @@ export function ClientDetailPage() {
               payments.map((p, idx) => (
                 <div
                   key={`${p.date}-${idx}`}
-                  className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4"
+                  className="flex items-start gap-3 rounded-2xl border border-border bg-card hover:bg-slate-50 p-4"
                 >
                   <div
                     className={[
@@ -196,8 +196,8 @@ export function ClientDetailPage() {
                     ].join(' ')}
                   />
                   <div className="flex-1">
-                    <div className="text-xs font-semibold text-white/50">{p.date}</div>
-                    <div className="mt-1 text-sm font-semibold text-white/85">{p.text}</div>
+                    <div className="text-xs font-semibold text-muted">{p.date}</div>
+                    <div className="mt-1 text-sm font-semibold text-text">{p.text}</div>
                   </div>
                 </div>
               ))
@@ -208,12 +208,12 @@ export function ClientDetailPage() {
 
       {tab === 'documents' && (
         <PortalCard>
-          <div className="font-heading text-lg font-extrabold text-white">Documents</div>
-          <div className="mt-1 text-xs font-semibold text-white/55">Client & project files (demo)</div>
+          <div className="font-heading text-lg font-extrabold text-text">Documents</div>
+          <div className="mt-1 text-xs font-semibold text-muted">Client & project files (demo)</div>
           <div className="mt-5">
             <TableShell>
               <table className="w-full text-left text-sm">
-                <thead className="bg-white/5 text-xs font-bold text-white/60">
+                <thead className="bg-card hover:bg-slate-50 text-xs font-bold text-muted">
                   <tr>
                     <th className="px-5 py-3">File</th>
                     <th className="px-5 py-3">Type</th>
@@ -221,12 +221,12 @@ export function ClientDetailPage() {
                     <th className="px-5 py-3 text-right">Download</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/10">
+                <tbody className="divide-y divide-border">
                   {documents.map((d) => (
-                    <tr key={d.name} className="text-white/80">
-                      <td className="px-5 py-4 font-semibold text-white">{d.name}</td>
+                    <tr key={d.name} className="text-secondary">
+                      <td className="px-5 py-4 font-semibold text-text">{d.name}</td>
                       <td className="px-5 py-4">{d.type}</td>
-                      <td className="px-5 py-4 text-white/60">{d.size}</td>
+                      <td className="px-5 py-4 text-muted">{d.size}</td>
                       <td className="px-5 py-4 text-right">
                         <PortalButton
                           variant="ghost"
@@ -258,24 +258,24 @@ export function ClientDetailPage() {
 
       {tab === 'notes' && (
         <PortalCard>
-          <div className="font-heading text-lg font-extrabold text-white">Internal Notes</div>
-          <div className="mt-1 text-xs font-semibold text-white/55">Saved to this client record.</div>
+          <div className="font-heading text-lg font-extrabold text-text">Internal Notes</div>
+          <div className="mt-1 text-xs font-semibold text-muted">Saved to this client record.</div>
           <div className="mt-5 space-y-4">
             {client.notes ? (
-              <div className="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
-                <div className="text-xs font-semibold text-white/55">History</div>
-                <pre className="mt-2 max-h-48 overflow-auto whitespace-pre-wrap font-sans text-sm text-white/75">
+              <div className="rounded-2xl border border-border bg-card/40 p-4">
+                <div className="text-xs font-semibold text-muted">History</div>
+                <pre className="mt-2 max-h-48 overflow-auto whitespace-pre-wrap font-sans text-sm text-text/75">
                   {client.notes}
                 </pre>
               </div>
             ) : null}
             <label className="grid gap-2">
-              <span className="text-sm font-semibold text-white/70">Add a note</span>
+              <span className="text-sm font-semibold text-muted">Add a note</span>
               <textarea
                 value={noteDraft}
                 onChange={(e) => setNoteDraft(e.target.value)}
                 rows={5}
-                className="w-full resize-y rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/35 outline-none ring-orange-500/35 focus:ring-2"
+                className="w-full resize-y rounded-xl border border-border bg-card hover:bg-slate-50 px-4 py-3 text-sm text-text placeholder:text-text/35 outline-none ring-orange-500/35 focus:ring-2"
                 placeholder="Meeting outcomes, billing quirks, risk flags…"
               />
             </label>
@@ -311,8 +311,8 @@ export function ClientDetailPage() {
           </div>
         }
       >
-        <div className="text-sm text-white/70">
-          Use the <span className="font-semibold text-white">Documents</span> tab to download client files.
+        <div className="text-sm text-muted">
+          Use the <span className="font-semibold text-text">Documents</span> tab to download client files.
         </div>
       </Modal>
     </div>

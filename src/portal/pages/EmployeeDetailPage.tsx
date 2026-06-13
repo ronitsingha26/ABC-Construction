@@ -96,7 +96,7 @@ export function EmployeeDetailPage() {
       <div className="space-y-4">
         <Link
           to="/portal/employees"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-white/70 hover:text-white"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-muted hover:text-text"
         >
           <ArrowLeft className="h-4 w-4" /> Back to Employees
         </Link>
@@ -125,14 +125,14 @@ export function EmployeeDetailPage() {
         <div>
           <Link
             to="/portal/employees"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-white/70 hover:text-white"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-muted hover:text-text"
           >
             <ArrowLeft className="h-4 w-4" /> Back to Employees
           </Link>
-          <div className="mt-2 font-heading text-2xl font-extrabold text-white">
+          <div className="mt-2 font-heading text-2xl font-extrabold text-text">
             {emp.name}
           </div>
-          <div className="mt-1 text-sm text-white/60">
+          <div className="mt-1 text-sm text-muted">
             {emp.role} • {emp.employeeId || 'N/A'}
           </div>
         </div>
@@ -144,31 +144,31 @@ export function EmployeeDetailPage() {
       <PortalCard>
         <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-4">
-            <img src={avatar} alt={emp.name} className="h-16 w-16 rounded-2xl border border-white/10 object-cover" />
+            <img src={avatar} alt={emp.name} className="h-16 w-16 rounded-2xl border border-border object-cover" />
             <div>
-              <div className="text-lg font-extrabold text-white">{emp.name}</div>
-              <div className="mt-1 text-sm text-white/60">{emp.role}</div>
-              <div className="mt-1 text-xs font-semibold text-white/45">{emp.employeeId || 'N/A'}</div>
+              <div className="text-lg font-extrabold text-text">{emp.name}</div>
+              <div className="mt-1 text-sm text-muted">{emp.role}</div>
+              <div className="mt-1 text-xs font-semibold text-muted">{emp.employeeId || 'N/A'}</div>
             </div>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-              <div className="text-xs font-semibold text-white/55">Phone</div>
-              <div className="mt-1 text-sm font-extrabold text-white">{emp.phone}</div>
+            <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 px-4 py-3">
+              <div className="text-xs font-semibold text-muted">Phone</div>
+              <div className="mt-1 text-sm font-extrabold text-text">{emp.phone}</div>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-              <div className="text-xs font-semibold text-white/55">Email</div>
-              <div className="mt-1 text-sm font-extrabold text-white">{emp.email ?? '—'}</div>
+            <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 px-4 py-3">
+              <div className="text-xs font-semibold text-muted">Email</div>
+              <div className="mt-1 text-sm font-extrabold text-text">{emp.email ?? '—'}</div>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-              <div className="text-xs font-semibold text-white/55">Assigned</div>
-              <div className="mt-1 text-sm font-extrabold text-white">{assigned?.name ?? '—'}</div>
+            <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 px-4 py-3">
+              <div className="text-xs font-semibold text-muted">Assigned</div>
+              <div className="mt-1 text-sm font-extrabold text-text">{assigned?.name ?? '—'}</div>
             </div>
           </div>
         </div>
 
-        <div className="mt-6 border-t border-white/10 pt-4">
+        <div className="mt-6 border-t border-border pt-4">
           <div className="flex flex-wrap gap-2">
             {[
               { id: 'attendance', label: 'Attendance' },
@@ -183,7 +183,7 @@ export function EmployeeDetailPage() {
                   'rounded-full px-4 py-2 text-sm font-semibold transition',
                   tab === t.id
                     ? 'bg-orange-500 text-slate-950'
-                    : 'border border-white/10 bg-white/5 text-white/75 hover:bg-white/10',
+                    : 'border border-border bg-card hover:bg-slate-50 text-text/75 hover:bg-slate-100',
                 ].join(' ')}
               >
                 {t.label}
@@ -197,8 +197,8 @@ export function EmployeeDetailPage() {
         <PortalCard>
           <div className="flex items-center justify-between gap-4">
             <div>
-              <div className="font-heading text-lg font-extrabold text-white">Attendance</div>
-              <div className="text-xs font-semibold text-white/55">Calendar view</div>
+              <div className="font-heading text-lg font-extrabold text-text">Attendance</div>
+              <div className="text-xs font-semibold text-muted">Calendar view</div>
             </div>
             <div className="flex items-center gap-2">
               <button
@@ -208,12 +208,12 @@ export function EmployeeDetailPage() {
                   const d = new Date(y, (m ?? 1) - 2, 1)
                   setYm(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`)
                 }}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/75 hover:bg-white/10"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card hover:bg-slate-50 text-text/75 hover:bg-slate-100"
                 aria-label="Previous month"
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>
-              <div className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-extrabold text-white/85">
+              <div className="rounded-full border border-border bg-card hover:bg-slate-50 px-4 py-2 text-sm font-extrabold text-text">
                 {monthLabel(ym)}
               </div>
               <button
@@ -223,7 +223,7 @@ export function EmployeeDetailPage() {
                   const d = new Date(y, (m ?? 1), 1)
                   setYm(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`)
                 }}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/75 hover:bg-white/10"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card hover:bg-slate-50 text-text/75 hover:bg-slate-100"
                 aria-label="Next month"
               >
                 <ChevronRight className="h-4 w-4" />
@@ -233,7 +233,7 @@ export function EmployeeDetailPage() {
 
           <div className="mt-5 grid grid-cols-7 gap-2">
             {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((d) => (
-              <div key={d} className="text-center text-xs font-bold text-white/45">
+              <div key={d} className="text-center text-xs font-bold text-muted">
                 {d}
               </div>
             ))}
@@ -245,11 +245,11 @@ export function EmployeeDetailPage() {
                     ? 'bg-red-500/25 border-red-400/30'
                     : c === 'Half Day'
                       ? 'bg-yellow-500/25 border-yellow-400/30'
-                      : 'bg-white/5 border-white/10'
+                      : 'bg-card hover:bg-slate-50 border-border'
               return (
                 <div
                   key={idx}
-                  className={`h-12 rounded-xl border ${cls} flex items-center justify-center text-xs font-extrabold text-white/80`}
+                  className={`h-12 rounded-xl border ${cls} flex items-center justify-center text-xs font-extrabold text-secondary`}
                   title={c}
                 >
                   {idx + 1}
@@ -259,21 +259,21 @@ export function EmployeeDetailPage() {
           </div>
 
           <div className="mt-6 grid gap-3 sm:grid-cols-4">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-xs font-semibold text-white/55">Present</div>
-              <div className="mt-1 text-lg font-extrabold text-emerald-200">{month.summary.present}</div>
+            <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 p-4">
+              <div className="text-xs font-semibold text-muted">Present</div>
+              <div className="mt-1 text-lg font-extrabold text-emerald-700">{month.summary.present}</div>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-xs font-semibold text-white/55">Absent</div>
-              <div className="mt-1 text-lg font-extrabold text-red-200">{month.summary.absent}</div>
+            <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 p-4">
+              <div className="text-xs font-semibold text-muted">Absent</div>
+              <div className="mt-1 text-lg font-extrabold text-red-700">{month.summary.absent}</div>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-xs font-semibold text-white/55">Half Day</div>
+            <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 p-4">
+              <div className="text-xs font-semibold text-muted">Half Day</div>
               <div className="mt-1 text-lg font-extrabold text-yellow-200">{month.summary.halfDay}</div>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-xs font-semibold text-white/55">Holidays</div>
-              <div className="mt-1 text-lg font-extrabold text-white/85">{month.summary.holidays}</div>
+            <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 p-4">
+              <div className="text-xs font-semibold text-muted">Holidays</div>
+              <div className="mt-1 text-lg font-extrabold text-text">{month.summary.holidays}</div>
             </div>
           </div>
         </PortalCard>
@@ -281,12 +281,12 @@ export function EmployeeDetailPage() {
 
       {tab === 'projects' && (
         <PortalCard>
-          <div className="font-heading text-lg font-extrabold text-white">Projects</div>
-          <div className="mt-1 text-xs font-semibold text-white/55">History (demo)</div>
+          <div className="font-heading text-lg font-extrabold text-text">Projects</div>
+          <div className="mt-1 text-xs font-semibold text-muted">History (demo)</div>
           <div className="mt-4">
             <TableShell>
               <table className="w-full text-left text-sm">
-                <thead className="bg-white/5 text-xs font-bold text-white/60">
+                <thead className="bg-card hover:bg-slate-50 text-xs font-bold text-muted">
                   <tr>
                     <th className="px-5 py-3">Project name</th>
                     <th className="px-5 py-3">Role</th>
@@ -294,10 +294,10 @@ export function EmployeeDetailPage() {
                     <th className="px-5 py-3">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/10">
+                <tbody className="divide-y divide-border">
                   {(assigned ? [assigned] : store.projects.slice(0, 2)).map((p) => (
-                    <tr key={p.id} className="text-white/80">
-                      <td className="px-5 py-4 font-extrabold text-white">{p.name}</td>
+                    <tr key={p.id} className="text-secondary">
+                      <td className="px-5 py-4 font-extrabold text-text">{p.name}</td>
                       <td className="px-5 py-4">{emp.role}</td>
                       <td className="px-5 py-4">{p.startDate} → {p.deadline}</td>
                       <td className="px-5 py-4">
@@ -316,12 +316,12 @@ export function EmployeeDetailPage() {
 
       {tab === 'payroll' && (
         <PortalCard>
-          <div className="font-heading text-lg font-extrabold text-white">Payroll</div>
-          <div className="mt-1 text-xs font-semibold text-white/55">Last 6 months</div>
+          <div className="font-heading text-lg font-extrabold text-text">Payroll</div>
+          <div className="mt-1 text-xs font-semibold text-muted">Last 6 months</div>
           <div className="mt-4">
             <TableShell>
               <table className="w-full text-left text-sm">
-                <thead className="bg-white/5 text-xs font-bold text-white/60">
+                <thead className="bg-card hover:bg-slate-50 text-xs font-bold text-muted">
                   <tr>
                     <th className="px-5 py-3">Month</th>
                     <th className="px-5 py-3">Working Days</th>
@@ -332,15 +332,15 @@ export function EmployeeDetailPage() {
                     <th className="px-5 py-3">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/10">
+                <tbody className="divide-y divide-border">
                   {payrollRows.map((r, idx) => (
-                    <tr key={idx} className="text-white/80">
-                      <td className="px-5 py-4 font-extrabold text-white">{r.month}</td>
+                    <tr key={idx} className="text-secondary">
+                      <td className="px-5 py-4 font-extrabold text-text">{r.month}</td>
                       <td className="px-5 py-4">{r.workingDays}</td>
                       <td className="px-5 py-4">₹{r.basicRupees.toLocaleString('en-IN')}</td>
                       <td className="px-5 py-4">₹{r.overtimeRupees.toLocaleString('en-IN')}</td>
                       <td className="px-5 py-4">₹{r.deductionsRupees.toLocaleString('en-IN')}</td>
-                      <td className="px-5 py-4 font-extrabold text-emerald-200">₹{r.netPaidRupees.toLocaleString('en-IN')}</td>
+                      <td className="px-5 py-4 font-extrabold text-emerald-700">₹{r.netPaidRupees.toLocaleString('en-IN')}</td>
                       <td className="px-5 py-4">
                         <Badge tone={r.status === 'Paid' ? 'green' : r.status === 'Hold' ? 'red' : 'orange'}>{r.status}</Badge>
                       </td>

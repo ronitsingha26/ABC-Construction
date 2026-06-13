@@ -14,50 +14,14 @@
   --color-border: #334155;
 }
 
-html[data-theme='light'] {
-  --color-primary: #f97316;
-  --color-primary-dark: #ea580c;
+.portal-theme {
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
   --color-bg: #f8fafc;
-  --color-card: rgba(255, 255, 255, 0.86);
+  --color-card: #ffffff;
   --color-text: #0f172a;
-  --color-muted: #475569;
+  --color-muted: #64748b;
   --color-border: #e2e8f0;
-
-  /* fix low-contrast legacy utilities in light mode */
-  /* text */
-  [class*='text-white'] {
-    color: #0f172a;
-  }
-  [class*='text-white/90'],
-  [class*='text-white/85'],
-  [class*='text-white/80'] {
-    color: #0f172a;
-    opacity: 0.95;
-  }
-  [class*='text-white/70'],
-  [class*='text-white/65'],
-  [class*='text-white/60'],
-  [class*='text-white/55'],
-  [class*='text-white/50'],
-  [class*='text-white/45'] {
-    color: #4b5563;
-  }
-
-  /* backgrounds */
-  [class*='bg-white/5'] {
-    background-color: rgba(15, 23, 42, 0.03);
-  }
-  [class*='bg-white/10'] {
-    background-color: rgba(15, 23, 42, 0.06);
-  }
-
-  /* borders */
-  [class*='border-white/10'] {
-    border-color: rgba(148, 163, 184, 0.6);
-  }
-  [class*='border-white/15'] {
-    border-color: rgba(148, 163, 184, 0.7);
-  }
 }
 
 html {

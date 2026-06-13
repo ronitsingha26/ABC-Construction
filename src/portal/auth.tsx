@@ -6,6 +6,7 @@ export type PortalRole =
   | 'Site Engineer'
   | 'Accounts'
   | 'HR'
+  | 'Employee'
 
 export type PortalUser = {
   name: string
@@ -15,7 +16,7 @@ export type PortalUser = {
 
 type AuthState = {
   user: PortalUser | null
-  login: (args: { email: string; password: string }) => void
+  login: (args: { email: string; name: string; role: PortalRole }) => void
   logout: () => void
   setRole: (role: PortalRole) => void
   updateUser: (patch: Partial<Pick<PortalUser, 'name' | 'email'>>) => void
@@ -42,11 +43,11 @@ export function PortalAuthProvider({ children }: { children: React.ReactNode }) 
   const value = useMemo<AuthState>(() => {
     return {
       user,
-      login: ({ email }) => {
+      login: (args) => {
         const next: PortalUser = {
-          name: 'Rajesh Sharma',
-          role: 'Owner',
-          email,
+          name: args.name,
+          role: args.role,
+          email: args.email,
         }
         setUser(next)
         localStorage.setItem(LS_KEY, JSON.stringify(next))

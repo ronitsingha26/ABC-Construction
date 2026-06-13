@@ -159,6 +159,24 @@ export type Employee = {
 
 export type AttendanceDayStatus = 'Present' | 'Absent' | 'Half Day' | 'Holiday'
 
+export type LeaveRequestStatus = 'Pending' | 'Approved' | 'Rejected'
+export type LeaveRequest = {
+  id: string
+  employeeId: string
+  startDate: string
+  endDate: string
+  reason: string
+  status: LeaveRequestStatus
+}
+
+export type DailyAttendance = {
+  employeeId: string
+  date: string
+  status: 'Present' | 'Absent' | 'On Leave'
+  punchInTime?: string
+  punchOutTime?: string
+}
+
 export type EmployeeAttendanceMonth = {
   month: string // YYYY-MM
   days: AttendanceDayStatus[] // 35 cells (7x5)
@@ -269,6 +287,12 @@ type Store = {
   transactions: FinanceTransaction[]
   invoices: Invoice[]
   payrollRuns: PayrollRun[]
+  leaveRequests: LeaveRequest[]
+  dailyAttendance: DailyAttendance[]
+  applyLeave: (req: Omit<LeaveRequest, 'id' | 'status'>) => void
+  updateLeaveStatus: (id: string, status: LeaveRequestStatus) => void
+  punchIn: (employeeId: string, date: string, time: string) => void
+  punchOut: (employeeId: string, date: string, time: string) => void
   addProject: (p: Omit<Project, 'id'>) => string
   updateProject: (id: string, patch: Partial<Project>) => void
   deleteProject: (id: string) => void
@@ -291,7 +315,7 @@ type Store = {
 
 const Ctx = createContext<Store | null>(null)
 
-const LS_KEY = 'abc_portal_store_v1'
+const LS_KEY = 'abc_portal_store_v2'
 
 function uid(prefix: string) {
   return `${prefix}_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`
@@ -546,6 +570,8 @@ type StoreState = {
   transactions: FinanceTransaction[]
   invoices: Invoice[]
   payrollRuns: PayrollRun[]
+  leaveRequests: LeaveRequest[]
+  dailyAttendance: DailyAttendance[]
 }
 
 function normalizeState(s: StoreState): StoreState {
@@ -570,6 +596,8 @@ function normalizeState(s: StoreState): StoreState {
   const transactions = Array.isArray(s.transactions) ? s.transactions : seedState.transactions
   const invoices = Array.isArray(s.invoices) ? s.invoices : seedState.invoices
   const payrollRuns = Array.isArray(s.payrollRuns) ? s.payrollRuns : seedState.payrollRuns
+  const leaveRequests = Array.isArray(s.leaveRequests) ? s.leaveRequests : seedState.leaveRequests
+  const dailyAttendance = Array.isArray(s.dailyAttendance) ? s.dailyAttendance : seedState.dailyAttendance
 
   const employeeAttendance =
     s.employeeAttendance && typeof s.employeeAttendance === 'object'
@@ -600,6 +628,8 @@ function normalizeState(s: StoreState): StoreState {
     transactions,
     invoices,
     payrollRuns,
+    leaveRequests,
+    dailyAttendance,
     employeeAttendance,
     employeePayroll,
     projectDetails: nextDetails,
@@ -619,6 +649,8 @@ const seedState: StoreState = {
   transactions: seed.transactions,
   invoices: seed.invoices,
   payrollRuns: seed.payrollRuns,
+  leaveRequests: [],
+  dailyAttendance: [],
 }
 
 export function PortalStoreProvider({ children }: { children: React.ReactNode }) {
@@ -640,6 +672,37 @@ export function PortalStoreProvider({ children }: { children: React.ReactNode })
     return {
       ...state,
       getProjectDetail: (id: string) => safeProjectDetail(state.projectDetails[id]),
+      applyLeave: (req) =>
+        setState((s) => ({
+          ...s,
+          leaveRequests: [{ ...req, id: uid('leave'), status: 'Pending' }, ...s.leaveRequests],
+        })),
+      updateLeaveStatus: (id, status) =>
+        setState((s) => ({
+          ...s,
+          leaveRequests: s.leaveRequests.map((r) => (r.id === id ? { ...r, status } : r)),
+        })),
+      punchIn: (employeeId, date, time) =>
+        setState((s) => {
+          const existing = s.dailyAttendance.find(
+            (a) => a.employeeId === employeeId && a.date === date
+          )
+          if (existing) return s
+          return {
+            ...s,
+            dailyAttendance: [
+              ...s.dailyAttendance,
+              { employeeId, date, status: 'Present', punchInTime: time },
+            ],
+          }
+        }),
+      punchOut: (employeeId, date, time) =>
+        setState((s) => ({
+          ...s,
+          dailyAttendance: s.dailyAttendance.map((a) =>
+            a.employeeId === employeeId && a.date === date ? { ...a, punchOutTime: time } : a
+          ),
+        })),
       addProject: (p) => {
         const id = uid('p')
         setState((s) => {

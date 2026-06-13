@@ -2,13 +2,10 @@ import { motion } from 'framer-motion'
 import {
   Bell,
   ChevronDown,
-  Moon,
   Search,
-  Sun,
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useTheme } from '../hooks/useTheme'
 import { usePortalAuth } from './auth'
 import { usePortalSearch } from './search'
 
@@ -23,7 +20,6 @@ export function PortalTopbar() {
   const { user, logout } = usePortalAuth()
   const u = user ?? { name: 'User', role: 'Owner' as const }
   const search = usePortalSearch()
-  const theme = useTheme()
   const [open, setOpen] = useState(false)
   const inputRef = useRef<HTMLInputElement | null>(null)
 
@@ -74,7 +70,7 @@ export function PortalTopbar() {
         <div className="ml-auto flex items-center gap-2">
           <button
             type="button"
-            className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg/60 text-text/80 transition hover:bg-bg hover:text-text"
+            className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg/60 text-text transition hover:bg-bg hover:text-text"
             aria-label="Notifications"
           >
             <Bell className="h-5 w-5" />
@@ -83,20 +79,11 @@ export function PortalTopbar() {
             </span>
           </button>
 
-          <button
-            type="button"
-            onClick={theme.toggle}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg/60 text-text/80 transition hover:bg-bg hover:text-text"
-            aria-label="Toggle theme"
-          >
-            {theme.isDark ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
-          </button>
-
           <div className="relative">
             <button
               type="button"
               onClick={() => setOpen((o) => !o)}
-              className="inline-flex items-center gap-3 rounded-full border border-border bg-bg/60 py-1.5 pl-2 pr-3 text-sm font-semibold text-text/90 transition hover:bg-bg"
+              className="inline-flex items-center gap-3 rounded-full border border-border bg-bg/60 py-1.5 pl-2 pr-3 text-sm font-semibold text-text transition hover:bg-bg"
               aria-label="User menu"
             >
               <img
@@ -104,7 +91,7 @@ export function PortalTopbar() {
                   u.name,
                 )}&background=0F172A&color=F8FAFC&size=72&bold=true`}
                 alt={u.name}
-                className="h-8 w-8 rounded-full border border-white/10"
+                className="h-8 w-8 rounded-full border border-border"
               />
               <span className="hidden sm:inline">{u.name}</span>
               <ChevronDown className="h-4 w-4 text-muted" />
@@ -127,13 +114,13 @@ export function PortalTopbar() {
                 </div>
                 <button
                   type="button"
-                  className="w-full px-4 py-3 text-left text-sm font-semibold text-text/80 transition hover:bg-bg hover:text-text"
+                  className="w-full px-4 py-3 text-left text-sm font-semibold text-text transition hover:bg-bg hover:text-text"
                 >
                   Profile
                 </button>
                 <button
                   type="button"
-                  className="w-full px-4 py-3 text-left text-sm font-semibold text-text/80 transition hover:bg-bg hover:text-text"
+                  className="w-full px-4 py-3 text-left text-sm font-semibold text-text transition hover:bg-bg hover:text-text"
                 >
                   Change Password
                 </button>

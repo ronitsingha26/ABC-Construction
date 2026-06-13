@@ -118,8 +118,8 @@ export function InventoryPage() {
     <div className="space-y-6">
       <PortalCard className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <div className="font-heading text-2xl font-extrabold text-white">Inventory</div>
-          <div className="mt-1 text-sm text-white/60">
+          <div className="font-heading text-2xl font-extrabold text-text">Inventory</div>
+          <div className="mt-1 text-sm text-muted">
             Stock visibility, requests, and low-stock controls.
           </div>
         </div>
@@ -130,29 +130,29 @@ export function InventoryPage() {
 
       <div className="grid gap-6 lg:grid-cols-4">
         <PortalCard>
-          <div className="text-sm font-semibold text-white/60">Total Materials</div>
-          <div className="mt-2 font-heading text-3xl font-extrabold text-white">
+          <div className="text-sm font-semibold text-muted">Total Materials</div>
+          <div className="mt-2 font-heading text-3xl font-extrabold text-text">
             {totals.totalMaterials} types
           </div>
         </PortalCard>
         <PortalCard>
           <div className="flex items-center justify-between">
-            <div className="text-sm font-semibold text-white/60">Low Stock</div>
-            <AlertTriangle className="h-5 w-5 text-red-300" />
+            <div className="text-sm font-semibold text-muted">Low Stock</div>
+            <AlertTriangle className="h-5 w-5 text-red-600" />
           </div>
-          <div className="mt-2 font-heading text-3xl font-extrabold text-red-200">
+          <div className="mt-2 font-heading text-3xl font-extrabold text-red-700">
             {totals.lowStock} items
           </div>
         </PortalCard>
         <PortalCard>
-          <div className="text-sm font-semibold text-white/60">Pending Requests</div>
-          <div className="mt-2 font-heading text-3xl font-extrabold text-orange-200">
+          <div className="text-sm font-semibold text-muted">Pending Requests</div>
+          <div className="mt-2 font-heading text-3xl font-extrabold text-orange-700">
             {totals.pendingRequests}
           </div>
         </PortalCard>
         <PortalCard>
-          <div className="text-sm font-semibold text-white/60">Total Value</div>
-          <div className="mt-2 font-heading text-3xl font-extrabold text-white">
+          <div className="text-sm font-semibold text-muted">Total Value</div>
+          <div className="mt-2 font-heading text-3xl font-extrabold text-text">
             ₹{totals.totalValueLakh} Lakh
           </div>
         </PortalCard>
@@ -168,7 +168,7 @@ export function InventoryPage() {
                 'rounded-full px-4 py-2 text-sm font-semibold transition',
                 tab === 'stock'
                   ? 'bg-orange-500 text-slate-950'
-                  : 'border border-white/10 bg-white/5 text-white/75 hover:bg-white/10',
+                  : 'border border-border bg-card hover:bg-slate-50 text-text/75 hover:bg-slate-100',
               ].join(' ')}
             >
               Stock
@@ -180,7 +180,7 @@ export function InventoryPage() {
                 'rounded-full px-4 py-2 text-sm font-semibold transition',
                 tab === 'requests'
                   ? 'bg-orange-500 text-slate-950'
-                  : 'border border-white/10 bg-white/5 text-white/75 hover:bg-white/10',
+                  : 'border border-border bg-card hover:bg-slate-50 text-text/75 hover:bg-slate-100',
               ].join(' ')}
             >
               Requests
@@ -191,7 +191,7 @@ export function InventoryPage() {
             {categoryChips.map((c) => (
               <span
                 key={c}
-                className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-white/70"
+                className="rounded-full border border-border bg-card hover:bg-slate-50 px-3 py-1 text-xs font-semibold text-muted"
               >
                 {c}
               </span>
@@ -206,7 +206,7 @@ export function InventoryPage() {
         ) : (
           <TableShell>
             <table className="w-full text-left text-sm">
-              <thead className="bg-white/5 text-xs font-bold text-white/60">
+              <thead className="bg-card hover:bg-slate-50 text-xs font-bold text-muted">
                 <tr>
                   <th className="px-5 py-3">Material Name</th>
                   <th className="px-5 py-3">Category</th>
@@ -219,7 +219,7 @@ export function InventoryPage() {
                   <th className="px-5 py-3 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/10">
+              <tbody className="divide-y divide-border">
                 {filteredMaterials.map((m) => {
                   const available = Math.max(0, m.total - m.used)
                   const pct = Math.round((available / Math.max(1, m.total)) * 100)
@@ -228,26 +228,26 @@ export function InventoryPage() {
                   const low = pct < 30
                   const proj = m.projectId ? projects.find((p) => p.id === m.projectId)?.name : '—'
                   return (
-                    <tr key={m.id} className="text-white/80">
-                      <td className="px-5 py-4 font-extrabold text-white">{m.name}</td>
+                    <tr key={m.id} className="text-secondary">
+                      <td className="px-5 py-4 font-extrabold text-text">{m.name}</td>
                       <td className="px-5 py-4">
-                        <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-white/75">
+                        <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-text/75">
                           {m.category}
                         </span>
                       </td>
                       <td className="px-5 py-4">{m.unit}</td>
                       <td className="px-5 py-4">{m.total}</td>
                       <td className="px-5 py-4">{m.used}</td>
-                      <td className="px-5 py-4 font-extrabold text-white">{available}</td>
+                      <td className="px-5 py-4 font-extrabold text-text">{available}</td>
                       <td className="px-5 py-4">{proj ?? '—'}</td>
                       <td className="px-5 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="h-2 w-40 overflow-hidden rounded-full bg-white/10">
+                          <div className="h-2 w-40 overflow-hidden rounded-full bg-slate-100">
                             <div className={`h-full rounded-full ${bar}`} style={{ width: `${pct}%` }} />
                           </div>
-                          <div className="text-xs font-semibold text-white/55">{pct}%</div>
+                          <div className="text-xs font-semibold text-muted">{pct}%</div>
                           {low && (
-                            <span className="animate-pulse rounded-full bg-red-500/20 px-2 py-1 text-[11px] font-extrabold text-red-200">
+                            <span className="animate-pulse rounded-full bg-red-500/20 px-2 py-1 text-[11px] font-extrabold text-red-700">
                               LOW
                             </span>
                           )}
@@ -270,7 +270,7 @@ export function InventoryPage() {
       {tab === 'requests' && (
         <TableShell>
           <table className="w-full text-left text-sm">
-            <thead className="bg-white/5 text-xs font-bold text-white/60">
+            <thead className="bg-card hover:bg-slate-50 text-xs font-bold text-muted">
               <tr>
                 <th className="px-5 py-3">Date</th>
                 <th className="px-5 py-3">Requested By</th>
@@ -281,11 +281,11 @@ export function InventoryPage() {
                 <th className="px-5 py-3 text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/10">
+            <tbody className="divide-y divide-border">
               {requestRows.map(({ r, by, proj, mat }) => (
-                <tr key={r.id} className="text-white/80">
+                <tr key={r.id} className="text-secondary">
                   <td className="px-5 py-4">{r.date}</td>
-                  <td className="px-5 py-4 font-extrabold text-white">{by?.name ?? '—'}</td>
+                  <td className="px-5 py-4 font-extrabold text-text">{by?.name ?? '—'}</td>
                   <td className="px-5 py-4">{proj?.name ?? '—'}</td>
                   <td className="px-5 py-4">{mat?.name ?? '—'}</td>
                   <td className="px-5 py-4">{r.qty}</td>
@@ -314,7 +314,7 @@ export function InventoryPage() {
                         </PortalButton>
                       </div>
                     ) : (
-                      <span className="text-xs font-semibold text-white/45">—</span>
+                      <span className="text-xs font-semibold text-muted">—</span>
                     )}
                   </td>
                 </tr>

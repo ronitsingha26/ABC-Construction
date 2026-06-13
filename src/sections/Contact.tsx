@@ -83,7 +83,7 @@ export function Contact() {
   }
 
   const inputBase =
-    'mt-2 w-full rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/35 outline-none ring-orange-500/35 transition focus:ring-2'
+    'mt-2 w-full rounded-xl border bg-card hover:bg-slate-50 px-4 py-3 text-sm text-text placeholder:text-text/35 outline-none ring-orange-500/35 transition focus:ring-2'
 
   return (
     <section id="contact" className="relative py-24 sm:py-28">
@@ -101,11 +101,11 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur"
+            className="rounded-2xl border border-border bg-card hover:bg-slate-50 p-7 backdrop-blur"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="sm:col-span-1">
-                <label className="text-sm font-semibold text-white/80">
+                <label className="text-sm font-semibold text-secondary">
                   Name
                 </label>
                 <input
@@ -114,7 +114,7 @@ export function Contact() {
                   onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                   className={[
                     inputBase,
-                    'border-white/10',
+                    'border-border',
                     touched.name && errors.name ? 'border-orange-400/60' : '',
                   ].join(' ')}
                   placeholder="Your full name"
@@ -127,7 +127,7 @@ export function Contact() {
               </div>
 
               <div className="sm:col-span-1">
-                <label className="text-sm font-semibold text-white/80">
+                <label className="text-sm font-semibold text-secondary">
                   Phone
                 </label>
                 <input
@@ -136,7 +136,7 @@ export function Contact() {
                   onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
                   className={[
                     inputBase,
-                    'border-white/10',
+                    'border-border',
                     touched.phone && errors.phone ? 'border-orange-400/60' : '',
                   ].join(' ')}
                   placeholder="+91 98765 43210"
@@ -150,7 +150,7 @@ export function Contact() {
             </div>
 
             <div className="mt-4">
-              <label className="text-sm font-semibold text-white/80">
+              <label className="text-sm font-semibold text-secondary">
                 Email
               </label>
               <input
@@ -159,7 +159,7 @@ export function Contact() {
                 onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                 className={[
                   inputBase,
-                  'border-white/10',
+                  'border-border',
                   touched.email && errors.email ? 'border-orange-400/60' : '',
                 ].join(' ')}
                 placeholder="you@company.com"
@@ -172,7 +172,7 @@ export function Contact() {
             </div>
 
             <div className="mt-4">
-              <label className="text-sm font-semibold text-white/80">
+              <label className="text-sm font-semibold text-secondary">
                 Project Type
               </label>
               <select
@@ -183,7 +183,7 @@ export function Contact() {
                 }
                 className={[
                   inputBase,
-                  'border-white/10',
+                  'border-border',
                   touched.projectType && errors.projectType
                     ? 'border-orange-400/60'
                     : '',
@@ -191,7 +191,7 @@ export function Contact() {
               >
                 <option value="">Select a project type</option>
                 {projectTypes.map((t) => (
-                  <option key={t} value={t} className="bg-slate-950">
+                  <option key={t} value={t} className="bg-card">
                     {t}
                   </option>
                 ))}
@@ -204,7 +204,7 @@ export function Contact() {
             </div>
 
             <div className="mt-4">
-              <label className="text-sm font-semibold text-white/80">
+              <label className="text-sm font-semibold text-secondary">
                 Message
               </label>
               <textarea
@@ -216,7 +216,7 @@ export function Contact() {
                 rows={5}
                 className={[
                   inputBase,
-                  'resize-none border-white/10',
+                  'resize-none border-border',
                   touched.message && errors.message ? 'border-orange-400/60' : '',
                 ].join(' ')}
                 placeholder="Tell us about location, size, timeline, and budget range…"
@@ -237,7 +237,7 @@ export function Contact() {
               >
                 Send Enquiry
               </motion.button>
-              <p className="mt-3 text-center text-xs text-white/55">
+              <p className="mt-3 text-center text-xs text-text/55">
                 We typically respond within 24 hours.
               </p>
             </div>
@@ -250,55 +250,55 @@ export function Contact() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
             className="space-y-6"
           >
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur">
-              <h3 className="font-heading text-lg font-extrabold text-white">
+            <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 p-7 backdrop-blur">
+              <h3 className="font-heading text-lg font-extrabold text-text">
                 Contact Details
               </h3>
-              <div className="mt-5 space-y-4 text-sm text-white/80">
+              <div className="mt-5 space-y-4 text-sm text-secondary">
                 <div className="flex items-start gap-3">
                   <MapPin className="mt-0.5 h-5 w-5 text-orange-400" />
                   <div>
-                    <div className="font-semibold text-white/90">Address</div>
+                    <div className="font-semibold text-secondary">Address</div>
                     123 Builder Street, Patna, Bihar — 800001
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Phone className="mt-0.5 h-5 w-5 text-orange-400" />
                   <div>
-                    <div className="font-semibold text-white/90">Phone</div>
+                    <div className="font-semibold text-secondary">Phone</div>
                     +91 98765 43210
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Mail className="mt-0.5 h-5 w-5 text-orange-400" />
                   <div>
-                    <div className="font-semibold text-white/90">Email</div>
+                    <div className="font-semibold text-secondary">Email</div>
                     info@abcconstruction.in
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Clock className="mt-0.5 h-5 w-5 text-orange-400" />
                   <div>
-                    <div className="font-semibold text-white/90">Hours</div>
+                    <div className="font-semibold text-secondary">Hours</div>
                     Mon–Sat, 9AM–6PM
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
-              <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
-                <div className="text-sm font-semibold text-white/85">
+            <div className="overflow-hidden rounded-2xl border border-border bg-card hover:bg-slate-50 backdrop-blur">
+              <div className="flex items-center justify-between border-b border-border px-6 py-4">
+                <div className="text-sm font-semibold text-text/85">
                   Map (placeholder)
                 </div>
                 <Map className="h-5 w-5 text-orange-400/80" />
               </div>
               <div className="flex h-64 items-center justify-center bg-gradient-to-br from-white/5 to-white/0">
                 <div className="text-center">
-                  <div className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                    <Map className="h-6 w-6 text-white/70" />
+                  <div className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-border bg-card hover:bg-slate-50">
+                    <Map className="h-6 w-6 text-muted" />
                   </div>
-                  <p className="mt-3 text-xs font-semibold text-white/60">
+                  <p className="mt-3 text-xs font-semibold text-muted">
                     Google Maps embed can be added here.
                   </p>
                 </div>

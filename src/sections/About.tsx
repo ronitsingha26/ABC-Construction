@@ -22,7 +22,7 @@ export function About() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
             </div>
 
-            <div className="absolute -bottom-5 left-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-slate-950/70 px-4 py-2 text-sm font-semibold text-white backdrop-blur">
+            <div className="absolute -bottom-5 left-5 inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-2 text-sm font-semibold text-text backdrop-blur">
               <span className="h-2 w-2 rounded-full bg-orange-400" />
               Est. 2005
             </div>
@@ -37,7 +37,7 @@ export function About() {
               </p>
             </ScrollReveal>
             <ScrollReveal x={18} delay={0.05} y={0}>
-              <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-text sm:text-4xl">
                 20 Years of Building Excellence in India
               </h2>
             </ScrollReveal>
@@ -58,9 +58,9 @@ export function About() {
                 'End-to-End Project Management',
               ].map((t, idx) => (
                 <ScrollReveal key={t} delay={0.08 + idx * 0.04} x={18} y={0}>
-                  <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+                  <div className="flex items-start gap-3 rounded-2xl border border-border bg-card hover:bg-slate-50 p-4 backdrop-blur">
                     <CheckCircle2 className="mt-0.5 h-5 w-5 text-orange-400" />
-                    <div className="text-sm font-semibold text-white/90">
+                    <div className="text-sm font-semibold text-secondary">
                       {t}
                     </div>
                   </div>

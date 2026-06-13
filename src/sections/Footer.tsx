@@ -25,13 +25,13 @@ export function Footer() {
       <div className="container-page py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="flex items-center gap-2 font-heading text-lg font-extrabold text-white">
+            <div className="flex items-center gap-2 font-heading text-lg font-extrabold text-text">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-orange-500/15 ring-1 ring-orange-400/30">
                 <HardHat className="h-5 w-5 text-orange-400" />
               </span>
               <span>ABC Construction</span>
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-white/70">
+            <p className="mt-4 text-sm leading-relaxed text-muted">
               Building trust through quality engineering, disciplined execution,
               and transparent communication—since 2005.
             </p>
@@ -46,7 +46,7 @@ export function Footer() {
                   key={s.label}
                   href="#"
                   aria-label={s.label}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition hover:bg-white/10 hover:text-white"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card hover:bg-slate-50 text-muted transition hover:bg-slate-100 hover:text-text"
                 >
                   <s.Icon className="h-5 w-5" />
                 </a>
@@ -55,13 +55,13 @@ export function Footer() {
           </div>
 
           <div>
-            <div className="text-sm font-extrabold tracking-wide text-white">
+            <div className="text-sm font-extrabold tracking-wide text-text">
               Services
             </div>
-            <ul className="mt-4 space-y-2 text-sm text-white/70">
+            <ul className="mt-4 space-y-2 text-sm text-muted">
               {services.map((s) => (
                 <li key={s}>
-                  <a href="#services" className="transition hover:text-white">
+                  <a href="#services" className="transition hover:text-text">
                     {s}
                   </a>
                 </li>
@@ -70,13 +70,13 @@ export function Footer() {
           </div>
 
           <div>
-            <div className="text-sm font-extrabold tracking-wide text-white">
+            <div className="text-sm font-extrabold tracking-wide text-text">
               Quick Links
             </div>
-            <ul className="mt-4 space-y-2 text-sm text-white/70">
+            <ul className="mt-4 space-y-2 text-sm text-muted">
               {quickLinks.map((s) => (
                 <li key={s}>
-                  <a href="#" className="transition hover:text-white">
+                  <a href="#" className="transition hover:text-text">
                     {s}
                   </a>
                 </li>
@@ -85,10 +85,10 @@ export function Footer() {
           </div>
 
           <div>
-            <div className="text-sm font-extrabold tracking-wide text-white">
+            <div className="text-sm font-extrabold tracking-wide text-text">
               Newsletter
             </div>
-            <p className="mt-4 text-sm text-white/70">
+            <p className="mt-4 text-sm text-muted">
               Monthly updates on projects, milestones, and insights.
             </p>
             <form className="mt-4 flex gap-2">
@@ -97,7 +97,7 @@ export function Footer() {
                 <input
                   type="email"
                   placeholder="Email address"
-                  className="w-full rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/35 outline-none ring-orange-500/35 focus:ring-2"
+                  className="w-full rounded-full border border-border bg-card hover:bg-slate-50 px-4 py-3 text-sm text-text placeholder:text-text/35 outline-none ring-orange-500/35 focus:ring-2"
                 />
               </div>
               <motion.button
@@ -115,10 +115,10 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs text-white/55 sm:flex-row">
+      <div className="border-t border-border">
+        <div className="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs text-text/55 sm:flex-row">
           <div>© 2026 Ronit Singha Developer. All Rights Reserved.</div>
-          <div className="text-white/45">Designed for credibility & performance.</div>
+          <div className="text-text/45">Designed for credibility & performance.</div>
         </div>
       </div>
     </footer>

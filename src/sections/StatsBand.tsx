@@ -36,12 +36,12 @@ function StatItem({
         initial={{ opacity: 0, y: 10 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="mt-4 font-heading text-4xl font-extrabold tracking-tight text-white"
+        className="mt-4 font-heading text-4xl font-extrabold tracking-tight text-text"
       >
         {display}
         {suffix}
       </motion.div>
-      <div className="mt-2 text-xs font-semibold tracking-wider text-white/70">
+      <div className="mt-2 text-xs font-semibold tracking-wider text-muted">
         {label}
       </div>
     </div>
@@ -57,7 +57,7 @@ export function StatsBand() {
       </div>
 
       <div className="container-page relative">
-        <div className="divide-y divide-white/10 overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur md:grid md:grid-cols-4 md:divide-x md:divide-y-0">
+        <div className="divide-y divide-white/10 overflow-hidden rounded-2xl border border-border bg-card hover:bg-slate-50 backdrop-blur md:grid md:grid-cols-4 md:divide-x md:divide-y-0">
           <StatItem
             icon={Building}
             value={200}

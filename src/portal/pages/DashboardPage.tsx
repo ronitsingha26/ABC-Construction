@@ -35,7 +35,7 @@ function Skeleton({ className }: { className: string }) {
   return (
     <div
       className={[
-        'animate-pulse rounded-2xl border border-white/10 bg-white/5',
+        'animate-pulse rounded-2xl border border-border bg-card hover:bg-slate-50',
         className,
       ].join(' ')}
     />
@@ -69,10 +69,10 @@ function StatCard({
 
   const subClass =
     subTone === 'green'
-      ? 'text-emerald-300'
+      ? 'text-emerald-600'
       : subTone === 'orange'
-        ? 'text-orange-200'
-        : 'text-red-300'
+        ? 'text-orange-700'
+        : 'text-red-600'
 
   return (
     <motion.div
@@ -83,7 +83,7 @@ function StatCard({
       <PortalCard>
         <div className="flex items-start justify-between gap-4">
           <div>
-            <div className="text-sm font-semibold text-white/65">{title}</div>
+            <div className="text-sm font-semibold text-muted">{title}</div>
             <div ref={ref} className="mt-2 font-heading text-3xl font-extrabold tracking-tight">
               {prefix}
               {inView ? display : 0}
@@ -102,7 +102,7 @@ function StatCard({
 
 function Progress({ value }: { value: number }) {
   return (
-    <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">
+    <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100">
       <div
         className="h-full rounded-full bg-orange-400"
         style={{ width: `${value}%` }}
@@ -167,30 +167,30 @@ export function DashboardPage() {
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="rounded-2xl border border-white/10 bg-gradient-to-r from-slate-800/45 to-slate-800/25 px-6 py-5"
+        className="rounded-2xl border border-border bg-gradient-to-r from-slate-800/45 to-slate-800/25 px-6 py-5"
       >
         <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
           <div>
-            <div className="text-sm font-semibold text-white/60">{today}</div>
-            <div className="mt-1 font-heading text-2xl font-extrabold tracking-tight text-white">
+            <div className="text-sm font-semibold text-muted">{today}</div>
+            <div className="mt-1 font-heading text-2xl font-extrabold tracking-tight text-text">
               {greeting}, Rajesh <span aria-hidden="true">👷</span>
             </div>
-            <div className="mt-1 text-sm text-white/55">
+            <div className="mt-1 text-sm text-muted">
               Here’s what’s happening across projects, inventory and finance today.
             </div>
           </div>
           <div className="mt-2 grid grid-cols-2 gap-2 md:mt-0 md:grid-cols-3">
-            <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-              <div className="text-xs font-semibold text-white/55">Employees</div>
-              <div className="mt-1 text-sm font-extrabold text-white">{totalEmployees}</div>
+            <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 px-4 py-3">
+              <div className="text-xs font-semibold text-muted">Employees</div>
+              <div className="mt-1 text-sm font-extrabold text-text">{totalEmployees}</div>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-              <div className="text-xs font-semibold text-white/55">Low Stock</div>
-              <div className="mt-1 text-sm font-extrabold text-orange-200">{lowStockCount}</div>
+            <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 px-4 py-3">
+              <div className="text-xs font-semibold text-muted">Low Stock</div>
+              <div className="mt-1 text-sm font-extrabold text-orange-700">{lowStockCount}</div>
             </div>
-            <div className="hidden rounded-2xl border border-white/10 bg-white/5 px-4 py-3 md:block">
-              <div className="text-xs font-semibold text-white/55">Delayed</div>
-              <div className="mt-1 text-sm font-extrabold text-red-200">{delayed}</div>
+            <div className="hidden rounded-2xl border border-border bg-card hover:bg-slate-50 px-4 py-3 md:block">
+              <div className="text-xs font-semibold text-muted">Delayed</div>
+              <div className="mt-1 text-sm font-extrabold text-red-700">{delayed}</div>
             </div>
           </div>
         </div>
@@ -242,18 +242,18 @@ export function DashboardPage() {
               <div className="font-heading text-lg font-extrabold">
                 Revenue vs Expenses
               </div>
-              <div className="text-xs font-semibold text-white/55">
+              <div className="text-xs font-semibold text-muted">
                 Last 6 months
               </div>
             </div>
-            <div className="text-xs font-semibold text-white/55">₹ in Lakhs</div>
+            <div className="text-xs font-semibold text-muted">₹ in Lakhs</div>
           </div>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={months}>
-                <CartesianGrid stroke="rgba(255,255,255,0.08)" vertical={false} />
-                <XAxis dataKey="name" stroke="rgba(255,255,255,0.45)" />
-                <YAxis stroke="rgba(255,255,255,0.45)" />
+                <CartesianGrid stroke="rgba(0,0,0,0.05)" vertical={false} />
+                <XAxis dataKey="name" stroke="rgba(0,0,0,0.4)" />
+                <YAxis stroke="rgba(0,0,0,0.4)" />
                 <Tooltip
                   contentStyle={{
                     background: 'var(--color-card)',
@@ -272,45 +272,45 @@ export function DashboardPage() {
 
         <PortalCard className="lg:col-span-2">
           <div className="font-heading text-lg font-extrabold">Today at a glance</div>
-          <div className="mt-1 text-xs font-semibold text-white/55">Operational quick stats</div>
+          <div className="mt-1 text-xs font-semibold text-muted">Operational quick stats</div>
           <div className="mt-5 space-y-3">
-            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-4">
+            <div className="flex items-center justify-between rounded-2xl border border-border bg-card hover:bg-slate-50 px-4 py-4">
               <div className="flex items-center gap-3">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                  <Users className="h-5 w-5 text-orange-300" />
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-border bg-card hover:bg-slate-50">
+                  <Users className="h-5 w-5 text-orange-600" />
                 </div>
                 <div>
-                  <div className="text-sm font-extrabold text-white">Employees</div>
-                  <div className="text-xs font-semibold text-white/55">Total workforce</div>
+                  <div className="text-sm font-extrabold text-text">Employees</div>
+                  <div className="text-xs font-semibold text-muted">Total workforce</div>
                 </div>
               </div>
-              <div className="text-lg font-extrabold text-white">{totalEmployees}</div>
+              <div className="text-lg font-extrabold text-text">{totalEmployees}</div>
             </div>
 
-            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-4">
+            <div className="flex items-center justify-between rounded-2xl border border-border bg-card hover:bg-slate-50 px-4 py-4">
               <div className="flex items-center gap-3">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                  <Package className="h-5 w-5 text-orange-300" />
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-border bg-card hover:bg-slate-50">
+                  <Package className="h-5 w-5 text-orange-600" />
                 </div>
                 <div>
-                  <div className="text-sm font-extrabold text-white">Low stock alerts</div>
-                  <div className="text-xs font-semibold text-white/55">Needs procurement</div>
+                  <div className="text-sm font-extrabold text-text">Low stock alerts</div>
+                  <div className="text-xs font-semibold text-muted">Needs procurement</div>
                 </div>
               </div>
-              <div className="text-lg font-extrabold text-orange-200">{lowStockCount}</div>
+              <div className="text-lg font-extrabold text-orange-700">{lowStockCount}</div>
             </div>
 
-            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-4">
+            <div className="flex items-center justify-between rounded-2xl border border-border bg-card hover:bg-slate-50 px-4 py-4">
               <div className="flex items-center gap-3">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                  <IndianRupee className="h-5 w-5 text-orange-300" />
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-border bg-card hover:bg-slate-50">
+                  <IndianRupee className="h-5 w-5 text-orange-600" />
                 </div>
                 <div>
-                  <div className="text-sm font-extrabold text-white">Revenue</div>
-                  <div className="text-xs font-semibold text-white/55">Total (demo)</div>
+                  <div className="text-sm font-extrabold text-text">Revenue</div>
+                  <div className="text-xs font-semibold text-muted">Total (demo)</div>
                 </div>
               </div>
-              <div className="text-lg font-extrabold text-white">₹{revenueCr} Cr</div>
+              <div className="text-lg font-extrabold text-text">₹{revenueCr} Cr</div>
             </div>
           </div>
         </PortalCard>
@@ -320,12 +320,12 @@ export function DashboardPage() {
         <PortalCard className="lg:col-span-3">
           <div className="mb-4">
             <div className="font-heading text-lg font-extrabold">Recent Projects</div>
-            <div className="text-xs font-semibold text-white/55">Live from portal store</div>
+            <div className="text-xs font-semibold text-muted">Live from portal store</div>
           </div>
 
-          <div className="overflow-hidden rounded-xl border border-white/10">
+          <div className="overflow-hidden rounded-xl border border-border">
             <table className="w-full text-left text-sm">
-              <thead className="bg-white/5 text-xs font-bold text-white/60">
+              <thead className="bg-card hover:bg-slate-50 text-xs font-bold text-muted">
                 <tr>
                   <th className="px-4 py-3">Project</th>
                   <th className="px-4 py-3">Client</th>
@@ -334,20 +334,20 @@ export function DashboardPage() {
                   <th className="px-4 py-3">Progress</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/10">
+              <tbody className="divide-y divide-border">
                 {store.projects.slice(0, 5).map((p) => {
                   const c = store.clients.find((x) => x.id === p.clientId)?.name ?? '—'
                   const tone =
                     p.status === 'Completed'
-                      ? 'bg-emerald-500/15 text-emerald-200'
+                      ? 'bg-emerald-500/15 text-emerald-700'
                       : p.status === 'Ongoing'
-                        ? 'bg-orange-500/15 text-orange-200'
+                        ? 'bg-orange-500/15 text-orange-700'
                         : p.status === 'Delayed'
-                          ? 'bg-red-500/15 text-red-200'
-                          : 'bg-blue-500/15 text-blue-200'
+                          ? 'bg-red-500/15 text-red-700'
+                          : 'bg-blue-500/15 text-blue-700'
                   return (
-                    <tr key={p.id} className="text-white/80">
-                      <td className="px-4 py-3 font-semibold text-white">{p.name}</td>
+                    <tr key={p.id} className="text-secondary">
+                      <td className="px-4 py-3 font-semibold text-text">{p.name}</td>
                       <td className="px-4 py-3">{c}</td>
                       <td className="px-4 py-3">₹{new Intl.NumberFormat('en-IN').format(p.budgetRupees)}</td>
                       <td className="px-4 py-3">
@@ -370,9 +370,9 @@ export function DashboardPage() {
           <div className="mb-4 flex items-center justify-between">
             <div>
               <div className="font-heading text-lg font-extrabold">Activity Feed</div>
-              <div className="text-xs font-semibold text-white/55">Latest updates</div>
+              <div className="text-xs font-semibold text-muted">Latest updates</div>
             </div>
-            <span className="text-xs font-semibold text-white/45">Live</span>
+            <span className="text-xs font-semibold text-muted">Live</span>
           </div>
 
           <div className="max-h-[340px] space-y-3 overflow-auto pr-2">
@@ -386,7 +386,7 @@ export function DashboardPage() {
               { dot: 'green', text: 'Client meeting scheduled — City Mall', time: '2 days ago' },
               { dot: 'red', text: 'Low stock alert — Cement (OPC 53)', time: '2 days ago' },
             ].map((a, i) => (
-              <div key={i} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div key={i} className="flex items-start gap-3 rounded-2xl border border-border bg-card hover:bg-slate-50 p-4">
                 <span
                   className={[
                     'mt-1.5 h-2.5 w-2.5 rounded-full',
@@ -398,8 +398,8 @@ export function DashboardPage() {
                   ].join(' ')}
                 />
                 <div className="min-w-0">
-                  <div className="text-sm font-semibold text-white/85">{a.text}</div>
-                  <div className="mt-1 text-xs font-semibold text-white/45">{a.time}</div>
+                  <div className="text-sm font-semibold text-text">{a.text}</div>
+                  <div className="mt-1 text-xs font-semibold text-muted">{a.time}</div>
                 </div>
               </div>
             ))}
@@ -411,7 +411,7 @@ export function DashboardPage() {
         <PortalCard>
           <div className="mb-4">
             <div className="font-heading text-lg font-extrabold">Upcoming Deadlines</div>
-            <div className="text-xs font-semibold text-white/55">Next 5 milestones</div>
+            <div className="text-xs font-semibold text-muted">Next 5 milestones</div>
           </div>
           <div className="space-y-3">
             {[
@@ -421,12 +421,12 @@ export function DashboardPage() {
               { date: '28 Apr', project: 'Aurora Park', days: 20 },
               { date: '02 May', project: 'TechPark Hub', days: 24 },
             ].map((d) => (
-              <div key={d.project} className="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div key={d.project} className="flex items-center justify-between gap-4 rounded-2xl border border-border bg-card hover:bg-slate-50 p-4">
                 <div>
-                  <div className="text-xs font-semibold text-white/50">{d.date}</div>
-                  <div className="text-sm font-extrabold text-white">{d.project}</div>
+                  <div className="text-xs font-semibold text-muted">{d.date}</div>
+                  <div className="text-sm font-extrabold text-text">{d.project}</div>
                 </div>
-                <div className="rounded-full bg-orange-500/15 px-3 py-1 text-xs font-extrabold text-orange-200">
+                <div className="rounded-full bg-orange-500/15 px-3 py-1 text-xs font-extrabold text-orange-700">
                   {d.days} days
                 </div>
               </div>
@@ -437,7 +437,7 @@ export function DashboardPage() {
         <PortalCard>
           <div className="mb-4">
             <div className="font-heading text-lg font-extrabold">Low Stock Alerts</div>
-            <div className="text-xs font-semibold text-white/55">Top 5 materials</div>
+            <div className="text-xs font-semibold text-muted">Top 5 materials</div>
           </div>
           <div className="space-y-4">
             {store.materials
@@ -448,12 +448,12 @@ export function DashboardPage() {
               .sort((a, b) => a.pct - b.pct)
               .slice(0, 5)
               .map((m) => (
-              <div key={m.name} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div key={m.name} className="rounded-2xl border border-border bg-card hover:bg-slate-50 p-4">
                 <div className="flex items-center justify-between gap-4">
-                  <div className="text-sm font-semibold text-white/85">{m.name}</div>
-                  <div className="text-xs font-extrabold text-red-200">{m.pct}%</div>
+                  <div className="text-sm font-semibold text-text">{m.name}</div>
+                  <div className="text-xs font-extrabold text-red-700">{m.pct}%</div>
                 </div>
-                <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-white/10">
+                <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-slate-100">
                   <div
                     className="h-full rounded-full bg-red-400"
                     style={{ width: `${Math.min(100, m.pct)}%` }}

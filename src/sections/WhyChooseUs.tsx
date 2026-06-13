@@ -44,7 +44,7 @@ function Point({
       <div className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-orange-400/20 bg-orange-500/10">
         <Icon className="h-5 w-5 text-orange-400" />
       </div>
-      <div className="text-sm font-semibold text-white/90">{text}</div>
+      <div className="text-sm font-semibold text-secondary">{text}</div>
     </ScrollReveal>
   )
 }
@@ -67,7 +67,7 @@ export function WhyChooseUs() {
           </div>
 
           <ScrollReveal className="relative mx-auto w-full max-w-md" y={18}>
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-[0_30px_120px_rgba(0,0,0,0.45)]">
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-card hover:bg-slate-50 shadow-[0_30px_120px_rgba(0,0,0,0.45)]">
               <img
                 src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80"
                 alt="Construction quality"

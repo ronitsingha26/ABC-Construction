@@ -30,14 +30,14 @@ export function Badge({
 }) {
   const cls =
     tone === 'green'
-      ? 'bg-emerald-500/15 text-emerald-200'
+      ? 'bg-emerald-500/15 text-emerald-700'
       : tone === 'orange'
-        ? 'bg-orange-500/15 text-orange-200'
+        ? 'bg-orange-500/15 text-orange-700'
         : tone === 'red'
-          ? 'bg-red-500/15 text-red-200'
+          ? 'bg-red-500/15 text-red-700'
           : tone === 'blue'
-            ? 'bg-blue-500/15 text-blue-200'
-            : 'bg-white/10 text-white/70'
+            ? 'bg-blue-500/15 text-blue-700'
+            : 'bg-slate-100 text-muted'
   return (
     <span className={['rounded-full px-3 py-1 text-xs font-bold', cls].join(' ')}>
       {children}
@@ -66,8 +66,8 @@ export function PortalButton({
     variant === 'primary'
       ? 'bg-orange-500 text-slate-950 hover:bg-orange-400'
       : variant === 'outline'
-        ? 'border border-border bg-bg/60 text-text/85 hover:bg-bg'
-        : 'text-text/80 hover:bg-bg hover:text-text'
+        ? 'border border-border bg-bg/60 text-text hover:bg-bg'
+        : 'text-text hover:bg-bg hover:text-text'
   return (
     <motion.button
       whileHover={disabled ? undefined : { scale: 1.015, y: -1 }}
@@ -193,7 +193,7 @@ export function Modal({
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-bg/60 text-text/80 transition hover:bg-bg hover:text-text"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-bg/60 text-text transition hover:bg-bg hover:text-text"
             aria-label="Close modal"
           >
             <X className="h-5 w-5" />
@@ -237,7 +237,7 @@ export function TableShell({
 }
 
 export function Skeleton({ className = '' }: { className?: string }) {
-  return <div className={['animate-pulse rounded-2xl bg-black/5 dark:bg-white/5', className].join(' ')} />
+  return <div className={['animate-pulse rounded-2xl bg-black/5 dark:bg-card hover:bg-slate-50', className].join(' ')} />
 }
 
 export function ConfirmModal({
@@ -274,14 +274,14 @@ export function ConfirmModal({
               onConfirm()
               onClose()
             }}
-            className={tone === 'danger' ? 'bg-red-500 text-white hover:bg-red-400' : 'bg-orange-500 text-slate-950 hover:bg-orange-400'}
+            className={tone === 'danger' ? 'bg-red-500 text-text hover:bg-red-400' : 'bg-orange-500 text-slate-950 hover:bg-orange-400'}
           >
             {confirmText}
           </PortalButton>
         </div>
       }
     >
-      <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/70">
+      <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 p-4 text-sm text-muted">
         {message}
       </div>
     </Modal>

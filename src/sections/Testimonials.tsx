@@ -114,18 +114,18 @@ export function Testimonials() {
                   <motion.article
                     key={t.quote}
                     whileHover={{ y: -6, scale: 1.01 }}
-                    className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#1E293B] p-6 shadow-[0_24px_90px_rgba(0,0,0,0.45)]"
+                    className="relative overflow-hidden rounded-2xl border border-border bg-[#1E293B] p-6 shadow-[0_24px_90px_rgba(0,0,0,0.45)]"
                   >
                     <div className="flex items-center justify-between gap-4">
                       <Stars />
                       <Quote className="h-6 w-6 text-orange-400/70" />
                     </div>
-                    <p className="mt-4 text-sm leading-relaxed text-slate-200/90">
+                    <p className="mt-4 text-sm leading-relaxed text-text/90">
                       “{t.quote}”
                     </p>
-                    <div className="mt-6 border-t border-white/10 pt-4">
-                      <div className="font-semibold text-white">{t.name}</div>
-                      <div className="text-xs text-white/65">
+                    <div className="mt-6 border-t border-border pt-4">
+                      <div className="font-semibold text-text">{t.name}</div>
+                      <div className="text-xs text-text/65">
                         {t.company} • {t.city}
                       </div>
                     </div>

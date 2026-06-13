@@ -14,9 +14,9 @@ function initials(name: string) {
 function avatarTone(seed: string) {
   const n = Array.from(seed).reduce((a, c) => a + c.charCodeAt(0), 0) % 6
   return [
-    'from-orange-500/25 to-orange-500/10 border-orange-400/25 text-orange-200',
-    'from-emerald-500/25 to-emerald-500/10 border-emerald-400/25 text-emerald-200',
-    'from-sky-500/25 to-sky-500/10 border-sky-400/25 text-sky-200',
+    'from-orange-500/25 to-orange-500/10 border-orange-400/25 text-orange-700',
+    'from-emerald-500/25 to-emerald-500/10 border-emerald-400/25 text-emerald-700',
+    'from-sky-500/25 to-sky-500/10 border-sky-400/25 text-sky-700',
     'from-fuchsia-500/25 to-fuchsia-500/10 border-fuchsia-400/25 text-fuchsia-200',
     'from-amber-500/25 to-amber-500/10 border-amber-400/25 text-amber-200',
     'from-indigo-500/25 to-indigo-500/10 border-indigo-400/25 text-indigo-200',
@@ -106,8 +106,8 @@ export function ClientsPage() {
     <div className="space-y-6">
       <PortalCard className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <div className="font-heading text-2xl font-extrabold text-white">Clients</div>
-          <div className="mt-1 text-sm text-white/60">
+          <div className="font-heading text-2xl font-extrabold text-text">Clients</div>
+          <div className="mt-1 text-sm text-muted">
             Manage client records and linked projects.
           </div>
         </div>
@@ -118,12 +118,12 @@ export function ClientsPage() {
 
       <PortalCard className="flex items-end justify-between gap-4">
         <div className="relative w-full max-w-xl">
-          <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/35" />
+          <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-text/35" />
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search clients…"
-            className="w-full rounded-xl border border-white/10 bg-white/5 py-3 pl-11 pr-4 text-sm text-white placeholder:text-white/35 outline-none ring-orange-500/35 focus:ring-2"
+            className="w-full rounded-xl border border-border bg-card hover:bg-slate-50 py-3 pl-11 pr-4 text-sm text-text placeholder:text-text/35 outline-none ring-orange-500/35 focus:ring-2"
           />
         </div>
       </PortalCard>
@@ -151,8 +151,8 @@ export function ClientsPage() {
                       {initials(c.name)}
                     </div>
                     <div>
-                      <div className="font-heading text-lg font-extrabold text-white">{c.name}</div>
-                      <div className="mt-1 text-xs font-semibold text-white/55">{c.city}</div>
+                      <div className="font-heading text-lg font-extrabold text-text">{c.name}</div>
+                      <div className="mt-1 text-xs font-semibold text-muted">{c.city}</div>
                     </div>
                   </div>
                   <PortalButton variant="ghost" onClick={() => openEdit(c.id)}>
@@ -161,23 +161,23 @@ export function ClientsPage() {
                 </div>
 
                 <div className="mt-5 grid gap-3">
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <div className="text-xs font-semibold text-white/55">Contact</div>
-                    <div className="mt-1 text-sm font-extrabold text-white">
+                  <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 p-4">
+                    <div className="text-xs font-semibold text-muted">Contact</div>
+                    <div className="mt-1 text-sm font-extrabold text-text">
                       {c.contactPerson ?? '—'}
                     </div>
-                    <div className="mt-1 text-xs font-semibold text-white/55">{c.phone}</div>
+                    <div className="mt-1 text-xs font-semibold text-muted">{c.phone}</div>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                      <div className="text-xs font-semibold text-white/55">Active Projects</div>
-                      <div className="mt-1 font-heading text-2xl font-extrabold text-white">
+                    <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 p-4">
+                      <div className="text-xs font-semibold text-muted">Active Projects</div>
+                      <div className="mt-1 font-heading text-2xl font-extrabold text-text">
                         {activeProjects}
                       </div>
                     </div>
-                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                      <div className="text-xs font-semibold text-white/55">Total Business</div>
-                      <div className="mt-1 font-heading text-2xl font-extrabold text-white">
+                    <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 p-4">
+                      <div className="text-xs font-semibold text-muted">Total Business</div>
+                      <div className="mt-1 font-heading text-2xl font-extrabold text-text">
                         ₹{business.toFixed(1)} Cr
                       </div>
                     </div>

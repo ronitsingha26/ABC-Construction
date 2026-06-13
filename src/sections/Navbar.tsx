@@ -40,14 +40,14 @@ export function Navbar() {
           className={[
             'transition-all',
             scrolled
-              ? 'bg-slate-950/95 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur'
+              ? 'bg-card/95 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur'
               : 'bg-transparent',
           ].join(' ')}
         >
           <div className="container-page flex h-16 items-center justify-between gap-4">
             <Link
               to="/"
-              className="flex items-center gap-2 font-heading text-base font-extrabold tracking-wide text-white"
+              className="flex items-center gap-2 font-heading text-base font-extrabold tracking-wide text-text"
             >
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-orange-500/15 ring-1 ring-orange-400/30">
                 <HardHat className="h-5 w-5 text-orange-400" />
@@ -61,7 +61,7 @@ export function Navbar() {
                   <a
                     key={l.label}
                     href={l.href}
-                    className="relative text-sm font-semibold text-white/75 transition hover:text-white after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-orange-400 after:transition after:duration-300 hover:after:scale-x-100"
+                    className="relative text-sm font-semibold text-text/75 transition hover:text-text after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-orange-400 after:transition after:duration-300 hover:after:scale-x-100"
                   >
                     {l.label}
                   </a>
@@ -69,7 +69,7 @@ export function Navbar() {
                   <NavLink
                     key={l.label}
                     to="/"
-                    className="relative text-sm font-semibold text-white/75 transition hover:text-white after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-orange-400 after:transition after:duration-300 hover:after:scale-x-100"
+                    className="relative text-sm font-semibold text-text/75 transition hover:text-text after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-orange-400 after:transition after:duration-300 hover:after:scale-x-100"
                   >
                     {l.label}
                   </NavLink>
@@ -89,7 +89,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setOpen(true)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/90 backdrop-blur transition hover:bg-white/10 md:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card hover:bg-slate-50 text-secondary backdrop-blur transition hover:bg-slate-100 md:hidden"
               aria-label="Open menu"
             >
               <Menu className="h-5 w-5" />
@@ -114,7 +114,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 260, damping: 28 }}
-              className="fixed right-0 top-0 z-50 h-full w-[86%] max-w-sm border-l border-white/10 bg-slate-950/95 backdrop-blur"
+              className="fixed right-0 top-0 z-50 h-full w-[86%] max-w-sm border-l border-border bg-card/95 backdrop-blur"
             >
               <div className="flex items-center justify-between px-5 py-4">
                 <div className="flex items-center gap-2 font-heading font-extrabold">
@@ -124,7 +124,7 @@ export function Navbar() {
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/90 transition hover:bg-white/10"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card hover:bg-slate-50 text-secondary transition hover:bg-slate-100"
                   aria-label="Close menu"
                 >
                   <X className="h-5 w-5" />
@@ -139,7 +139,7 @@ export function Navbar() {
                         key={l.label}
                         href={l.href}
                         onClick={() => setOpen(false)}
-                        className="block rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white/85 transition hover:bg-white/10"
+                        className="block rounded-xl border border-border bg-card hover:bg-slate-50 px-4 py-3 text-sm font-semibold text-text/85 transition hover:bg-slate-100"
                       >
                         {l.label}
                       </a>
@@ -148,7 +148,7 @@ export function Navbar() {
                         key={l.label}
                         to="/"
                         onClick={() => setOpen(false)}
-                        className="block rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white/85 transition hover:bg-white/10"
+                        className="block rounded-xl border border-border bg-card hover:bg-slate-50 px-4 py-3 text-sm font-semibold text-text/85 transition hover:bg-slate-100"
                       >
                         {l.label}
                       </Link>

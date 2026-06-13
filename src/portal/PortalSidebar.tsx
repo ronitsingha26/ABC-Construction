@@ -34,14 +34,18 @@ export function PortalSidebar() {
                   [
                     'group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition will-change-transform hover:translate-x-[2px]',
                     isActive
-                      ? 'border-l-4 border-orange-400 bg-bg text-text shadow-[0_10px_30px_rgba(0,0,0,0.18)]'
-                      : 'text-muted hover:bg-bg hover:text-text',
+                      ? 'bg-blue-50 text-blue-600 shadow-sm'
+                      : 'text-muted hover:bg-slate-50 hover:text-slate-900',
                   ].join(' ')
                 }
                 end={item.to === '/portal/dashboard'}
               >
-                <item.Icon className="h-5 w-5 text-orange-400/90" />
-                <span className="truncate">{item.label}</span>
+                {({ isActive }) => (
+                  <>
+                    <item.Icon className={`h-5 w-5 ${isActive ? 'text-blue-600' : 'text-slate-400 group-hover:text-slate-600'}`} />
+                    <span className="truncate">{item.label}</span>
+                  </>
+                )}
               </NavLink>
             ))}
           </div>
@@ -71,7 +75,7 @@ export function PortalSidebar() {
             whileTap={{ scale: 0.98 }}
             type="button"
             onClick={logout}
-            className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-bg/60 px-4 py-2.5 text-sm font-semibold text-text/80 transition hover:bg-bg hover:text-text"
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-bg/60 px-4 py-2.5 text-sm font-semibold text-text transition hover:bg-bg hover:text-text"
           >
             <LogOut className="h-4 w-4" />
             Logout

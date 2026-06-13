@@ -11,12 +11,10 @@ import { ProcessTimeline } from '../sections/ProcessTimeline'
 import { CTABanner } from '../sections/CTABanner'
 import { Contact } from '../sections/Contact'
 import { Footer } from '../sections/Footer'
-import { ThemeLock } from '../components/ThemeLock'
 
 export function LandingPage() {
   return (
     <div className="bg-bg text-text">
-      <ThemeLock theme="dark" />
       <Navbar />
       <main>
         <Hero />

@@ -21,14 +21,14 @@ export function CTABanner() {
 
       <div className="container-page relative py-16 sm:py-20">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center">
-          <div className="text-left text-white">
+          <div className="text-left text-text">
             <ScrollReveal y={14}>
               <h3 className="font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">
                 Ready to Start Your Dream Project?
               </h3>
             </ScrollReveal>
             <ScrollReveal delay={0.06} y={14}>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/90 sm:text-base">
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-secondary sm:text-base">
                 Get a free consultation and detailed quote within 24 hours.
               </p>
             </ScrollReveal>
@@ -48,7 +48,7 @@ export function CTABanner() {
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.98 }}
               href="#contact"
-              className="btn btn-outline border-white/70 text-white hover:bg-white hover:text-orange-600"
+              className="btn btn-outline border-white/70 text-text hover:bg-white hover:text-orange-600"
             >
               <Send className="h-4 w-4" />
               Request a Quote

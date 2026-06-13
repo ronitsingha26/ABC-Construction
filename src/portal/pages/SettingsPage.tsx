@@ -96,7 +96,7 @@ function Toggle({
       className={[
         'h-7 w-12 rounded-full border transition outline-none focus-visible:ring-2 focus-visible:ring-orange-400/50',
         disabled ? 'cursor-not-allowed opacity-60' : 'hover:opacity-95',
-        on ? 'border-orange-400/30 bg-orange-500/20' : 'border-white/10 bg-white/5',
+        on ? 'border-orange-400/30 bg-orange-500/20' : 'border-border bg-card hover:bg-slate-50',
       ].join(' ')}
     >
       <span
@@ -234,8 +234,8 @@ export function SettingsPage() {
   return (
     <div className="space-y-6">
       <PortalCard>
-        <div className="font-heading text-2xl font-extrabold text-white">Settings</div>
-        <div className="mt-1 text-sm text-white/60">Company controls, access matrix, alerts, and your profile.</div>
+        <div className="font-heading text-2xl font-extrabold text-text">Settings</div>
+        <div className="mt-1 text-sm text-muted">Company controls, access matrix, alerts, and your profile.</div>
       </PortalCard>
 
       <PortalCard>
@@ -256,7 +256,7 @@ export function SettingsPage() {
                 'rounded-full px-4 py-2 text-sm font-semibold transition',
                 tab === t.id
                   ? 'bg-orange-500 text-slate-950'
-                  : 'border border-white/10 bg-white/5 text-white/75 hover:bg-white/10',
+                  : 'border border-border bg-card hover:bg-slate-50 text-text/75 hover:bg-slate-100',
               ].join(' ')}
             >
               {t.label}
@@ -269,13 +269,13 @@ export function SettingsPage() {
         <PortalCard>
           <div className="flex flex-col gap-6 md:flex-row md:items-start">
             <div className="w-full md:max-w-xs">
-              <div className="text-sm font-semibold text-white/60">Logo</div>
+              <div className="text-sm font-semibold text-muted">Logo</div>
               <div className="mt-3 flex items-center gap-4">
-                <div className="grid h-16 w-16 place-items-center overflow-hidden rounded-full border border-white/10 bg-white/5">
+                <div className="grid h-16 w-16 place-items-center overflow-hidden rounded-full border border-border bg-card hover:bg-slate-50">
                   {company.logoDataUrl ? (
                     <img src={company.logoDataUrl} alt="Logo" className="h-full w-full object-cover" />
                   ) : (
-                    <span className="text-xs font-extrabold text-white/50">ABC</span>
+                    <span className="text-xs font-extrabold text-muted">ABC</span>
                   )}
                 </div>
                 <label className="cursor-pointer">
@@ -319,13 +319,13 @@ export function SettingsPage() {
 
       {tab === 'roles' && (
         <PortalCard>
-          <div className="font-heading text-lg font-extrabold text-white">Roles × Modules</div>
-          <div className="mt-1 text-xs font-semibold text-white/55">
+          <div className="font-heading text-lg font-extrabold text-text">Roles × Modules</div>
+          <div className="mt-1 text-xs font-semibold text-muted">
             Admin row is locked ON for all modules.
           </div>
           <div className="mt-5 overflow-auto">
             <table className="min-w-[980px] w-full text-left text-sm">
-              <thead className="bg-white/5 text-xs font-bold text-white/60">
+              <thead className="bg-card hover:bg-slate-50 text-xs font-bold text-muted">
                 <tr>
                   <th className="px-5 py-3">Role</th>
                   {modules.map((m) => (
@@ -335,10 +335,10 @@ export function SettingsPage() {
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/10">
+              <tbody className="divide-y divide-border">
                 {roles.map((r) => (
-                  <tr key={r} className="text-white/80">
-                    <td className="px-5 py-4 font-extrabold text-white">{r}</td>
+                  <tr key={r} className="text-secondary">
+                    <td className="px-5 py-4 font-extrabold text-text">{r}</td>
                     {modules.map((m) => (
                       <td key={m} className="px-5 py-4">
                         <Toggle
@@ -377,12 +377,12 @@ export function SettingsPage() {
 
       {tab === 'notifications' && (
         <PortalCard>
-          <div className="font-heading text-lg font-extrabold text-white">Notifications</div>
-          <div className="mt-1 text-xs font-semibold text-white/55">Toggle which events trigger alerts.</div>
+          <div className="font-heading text-lg font-extrabold text-text">Notifications</div>
+          <div className="mt-1 text-xs font-semibold text-muted">Toggle which events trigger alerts.</div>
           <div className="mt-5 grid gap-3">
             {NOTIF_ROWS.map((r) => (
-              <div key={r.k} className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-4">
-                <div className="text-sm font-semibold text-white/80">{r.label}</div>
+              <div key={r.k} className="flex items-center justify-between rounded-2xl border border-border bg-card hover:bg-slate-50 p-4">
+                <div className="text-sm font-semibold text-secondary">{r.label}</div>
                 <Toggle
                   on={notifs[r.k]}
                   onClick={() => setNotifs((s) => ({ ...s, [r.k]: !s[r.k] }))}
@@ -410,15 +410,15 @@ export function SettingsPage() {
       {tab === 'profile' && (
         <div className="grid gap-6 lg:grid-cols-2">
           <PortalCard>
-            <div className="font-heading text-lg font-extrabold text-white">My Profile</div>
-            <div className="mt-1 text-xs font-semibold text-white/55">Update your contact information.</div>
+            <div className="font-heading text-lg font-extrabold text-text">My Profile</div>
+            <div className="mt-1 text-xs font-semibold text-muted">Update your contact information.</div>
             <div className="mt-5 grid gap-4">
               <Input label="Name" value={my.name} onChange={(v) => setMy((s) => ({ ...s, name: v }))} />
               <Input label="Phone" value={my.phone} onChange={(v) => setMy((s) => ({ ...s, phone: v }))} />
               <Input label="Email" value={my.email} onChange={(v) => setMy((s) => ({ ...s, email: v }))} type="email" />
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <div className="text-xs font-semibold text-white/55">Last login</div>
-                <div className="mt-1 text-sm font-extrabold text-white">{my.lastLogin}</div>
+              <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 p-4">
+                <div className="text-xs font-semibold text-muted">Last login</div>
+                <div className="mt-1 text-sm font-extrabold text-text">{my.lastLogin}</div>
               </div>
             </div>
             <div className="mt-5 flex items-center justify-end gap-2">
@@ -439,8 +439,8 @@ export function SettingsPage() {
           </PortalCard>
 
           <PortalCard>
-            <div className="font-heading text-lg font-extrabold text-white">Change Password</div>
-            <div className="mt-1 text-xs font-semibold text-white/55">Demo validation (min 6 chars)</div>
+            <div className="font-heading text-lg font-extrabold text-text">Change Password</div>
+            <div className="mt-1 text-xs font-semibold text-muted">Demo validation (min 6 chars)</div>
             <div className="mt-5 grid gap-4">
               <Input label="Current" value={pw.current} onChange={(v) => setPw((s) => ({ ...s, current: v }))} type="password" />
               <Input label="New" value={pw.next} onChange={(v) => setPw((s) => ({ ...s, next: v }))} type="password" />
@@ -466,8 +466,8 @@ export function SettingsPage() {
 
       <PortalCard className="flex items-center justify-between gap-4">
         <div>
-          <div className="text-sm font-extrabold text-white">Logout</div>
-          <div className="mt-1 text-xs font-semibold text-white/55">Signed in as {user?.name ?? 'User'}.</div>
+          <div className="text-sm font-extrabold text-text">Logout</div>
+          <div className="mt-1 text-xs font-semibold text-muted">Signed in as {user?.name ?? 'User'}.</div>
         </div>
         <PortalButton variant="outline" onClick={logout}>
           Logout

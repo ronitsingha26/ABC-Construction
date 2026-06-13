@@ -63,7 +63,7 @@ export function ProcessTimeline() {
                   show: { opacity: 1, x: 0 },
                 }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="relative rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+                className="relative rounded-2xl border border-border bg-card hover:bg-slate-50 p-6 backdrop-blur"
               >
                 <div className="flex items-center gap-3">
                   <div className="relative inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-orange-400/25 bg-orange-500/10">
@@ -72,7 +72,7 @@ export function ProcessTimeline() {
                     </span>
                     <s.Icon className="h-6 w-6 text-orange-400" />
                   </div>
-                  <div className="font-heading text-base font-extrabold text-white">
+                  <div className="font-heading text-base font-extrabold text-text">
                     {s.title}
                   </div>
                 </div>

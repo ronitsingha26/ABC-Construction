@@ -53,8 +53,8 @@ export function PayrollPage() {
     <div className="space-y-6">
       <PortalCard className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <div className="font-heading text-2xl font-extrabold text-white">Payroll</div>
-          <div className="mt-1 text-sm text-white/60">
+          <div className="font-heading text-2xl font-extrabold text-text">Payroll</div>
+          <div className="mt-1 text-sm text-muted">
             Monthly payroll generation, payment status, and payslips.
           </div>
         </div>
@@ -73,26 +73,26 @@ export function PayrollPage() {
 
       <div className="grid gap-6 lg:grid-cols-3">
         <PortalCard>
-          <div className="text-sm font-semibold text-white/60">Total Payroll This Month</div>
-          <div className="mt-2 font-heading text-3xl font-extrabold text-white">
+          <div className="text-sm font-semibold text-muted">Total Payroll This Month</div>
+          <div className="mt-2 font-heading text-3xl font-extrabold text-text">
             ₹{totalPayrollLakh} Lakh
           </div>
         </PortalCard>
         <PortalCard>
-          <div className="text-sm font-semibold text-white/60">Employees Paid</div>
+          <div className="text-sm font-semibold text-muted">Employees Paid</div>
           <div className="mt-2 flex items-end justify-between gap-3">
-            <div className="font-heading text-3xl font-extrabold text-white">
+            <div className="font-heading text-3xl font-extrabold text-text">
               {paidCount}/{totalCount}
             </div>
-            <div className="text-xs font-semibold text-white/55">{progressPct}%</div>
+            <div className="text-xs font-semibold text-muted">{progressPct}%</div>
           </div>
-          <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-white/10">
+          <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-slate-100">
             <div className="h-full rounded-full bg-emerald-400" style={{ width: `${progressPct}%` }} />
           </div>
         </PortalCard>
         <PortalCard>
-          <div className="text-sm font-semibold text-white/60">Pending</div>
-          <div className="mt-2 font-heading text-3xl font-extrabold text-red-200">
+          <div className="text-sm font-semibold text-muted">Pending</div>
+          <div className="mt-2 font-heading text-3xl font-extrabold text-red-700">
             ₹{pendingLakh} Lakh
           </div>
         </PortalCard>
@@ -100,7 +100,7 @@ export function PayrollPage() {
 
       <TableShell>
         <table className="w-full text-left text-sm">
-          <thead className="bg-white/5 text-xs font-bold text-white/60">
+          <thead className="bg-card hover:bg-slate-50 text-xs font-bold text-muted">
             <tr>
               <th className="px-5 py-3">Employee</th>
               <th className="px-5 py-3">Role</th>
@@ -113,19 +113,19 @@ export function PayrollPage() {
               <th className="px-5 py-3 text-right">Payslip</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10">
+          <tbody className="divide-y divide-border">
             {rows.map((r) => (
-              <tr key={r.e.id} className="text-white/80">
+              <tr key={r.e.id} className="text-secondary">
                 <td className="px-5 py-4">
-                  <div className="font-extrabold text-white">{r.e.name}</div>
-                  <div className="mt-1 text-xs font-semibold text-white/45">{r.e.employeeId}</div>
+                  <div className="font-extrabold text-text">{r.e.name}</div>
+                  <div className="mt-1 text-xs font-semibold text-muted">{r.e.employeeId}</div>
                 </td>
                 <td className="px-5 py-4">{r.e.role}</td>
                 <td className="px-5 py-4">{r.days}</td>
                 <td className="px-5 py-4">₹{inr(r.basic)}</td>
                 <td className="px-5 py-4">₹{inr(r.overtime)}</td>
                 <td className="px-5 py-4">₹{inr(r.deductions)}</td>
-                <td className="px-5 py-4 font-extrabold text-emerald-200">₹{inr(r.net)}</td>
+                <td className="px-5 py-4 font-extrabold text-emerald-700">₹{inr(r.net)}</td>
                 <td className="px-5 py-4">
                   <Badge tone={tone(r.status)}>{r.status}</Badge>
                 </td>
@@ -136,7 +136,7 @@ export function PayrollPage() {
                       setActiveEmpId(r.e.id)
                       setOpenPayslip(true)
                     }}
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 transition hover:bg-white/10"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card hover:bg-slate-50 text-secondary transition hover:bg-slate-100"
                     aria-label="Payslip"
                   >
                     <Receipt className="h-5 w-5" />
@@ -199,28 +199,28 @@ export function PayrollPage() {
         }
       >
         {!active ? (
-          <div className="text-sm text-white/60">Select an employee.</div>
+          <div className="text-sm text-muted">Select an employee.</div>
         ) : (
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 font-mono text-sm text-white/85">
+          <div className="rounded-2xl border border-border bg-card hover:bg-slate-50 p-6 font-mono text-sm text-text">
             <div className="flex items-center justify-between">
               <div className="font-extrabold">ABC CONSTRUCTION</div>
-              <div className="text-white/60">Payslip — {month}</div>
+              <div className="text-muted">Payslip — {month}</div>
             </div>
-            <div className="my-4 h-px bg-white/10" />
+            <div className="my-4 h-px bg-slate-100" />
             <div className="grid grid-cols-2 gap-2">
-              <div className="text-white/60">Employee</div>
+              <div className="text-muted">Employee</div>
               <div className="font-semibold">{active.e.name}</div>
-              <div className="text-white/60">Employee ID</div>
+              <div className="text-muted">Employee ID</div>
               <div className="font-semibold">{active.e.employeeId}</div>
-              <div className="text-white/60">Role</div>
+              <div className="text-muted">Role</div>
               <div className="font-semibold">{active.e.role}</div>
-              <div className="text-white/60">Month</div>
+              <div className="text-muted">Month</div>
               <div className="font-semibold">{month}</div>
             </div>
-            <div className="my-4 h-px bg-white/10" />
+            <div className="my-4 h-px bg-slate-100" />
             <div className="grid grid-cols-2 gap-6">
               <div>
-                <div className="text-xs font-extrabold text-white/70">EARNINGS</div>
+                <div className="text-xs font-extrabold text-muted">EARNINGS</div>
                 <div className="mt-2 space-y-1">
                   <div className="flex items-center justify-between"><span>Basic</span><span>₹{inr(active.basic)}</span></div>
                   <div className="flex items-center justify-between"><span>HRA</span><span>₹{inr(8000)}</span></div>
@@ -228,7 +228,7 @@ export function PayrollPage() {
                 </div>
               </div>
               <div>
-                <div className="text-xs font-extrabold text-white/70">DEDUCTIONS</div>
+                <div className="text-xs font-extrabold text-muted">DEDUCTIONS</div>
                 <div className="mt-2 space-y-1">
                   <div className="flex items-center justify-between"><span>PF</span><span>₹{inr(4200)}</span></div>
                   <div className="flex items-center justify-between"><span>ESI</span><span>₹{inr(650)}</span></div>
@@ -236,7 +236,7 @@ export function PayrollPage() {
                 </div>
               </div>
             </div>
-            <div className="my-4 h-px bg-white/10" />
+            <div className="my-4 h-px bg-slate-100" />
             <div className="flex items-center justify-between text-base font-extrabold">
               <div>NET SALARY:</div>
               <div>₹{inr(active.net)}</div>

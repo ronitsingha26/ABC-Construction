@@ -63,7 +63,7 @@ export function Team() {
               }}
               transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -7, scale: 1.01 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#1E293B] p-6 shadow-[0_24px_90px_rgba(0,0,0,0.45)]"
+              className="group relative overflow-hidden rounded-2xl border border-border bg-[#1E293B] p-6 shadow-[0_24px_90px_rgba(0,0,0,0.45)]"
             >
               <div className="absolute inset-x-0 top-0 h-0.5 bg-transparent transition group-hover:bg-orange-400/90" />
               <div className="pointer-events-none absolute -right-10 -top-12 h-32 w-32 rounded-full bg-orange-500/10 blur-2xl opacity-0 transition group-hover:opacity-100" />
@@ -72,27 +72,27 @@ export function Team() {
                 <img
                   src={m.image}
                   alt={m.name}
-                  className="h-14 w-14 rounded-2xl border border-white/10"
+                  className="h-14 w-14 rounded-2xl border border-border"
                   loading="lazy"
                 />
                 <a
                   href="#"
                   aria-label={`${m.name} profile link`}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition hover:bg-white/10 hover:text-white"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card hover:bg-slate-50 text-muted transition hover:bg-slate-100 hover:text-text"
                 >
                   <LinkIcon className="h-5 w-5" />
                 </a>
               </div>
 
-              <h3 className="mt-5 font-heading text-lg font-extrabold text-white">
+              <h3 className="mt-5 font-heading text-lg font-extrabold text-text">
                 {m.name}
               </h3>
               <p className="mt-1 text-sm font-semibold text-orange-200/90">
                 {m.role}
               </p>
-              <div className="mt-4 flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-xs font-semibold text-white/70">
+              <div className="mt-4 flex items-center justify-between gap-3 rounded-2xl border border-border bg-card hover:bg-slate-50 px-4 py-3 text-xs font-semibold text-muted">
                 <span>{m.exp} experience</span>
-                <span className="text-white/45">•</span>
+                <span className="text-text/45">•</span>
                 <span>{m.city}</span>
               </div>
             </motion.article>

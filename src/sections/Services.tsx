@@ -71,7 +71,7 @@ export function Services() {
               }}
               transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -6, scale: 1.01 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#1E293B] p-6 shadow-[0_24px_90px_rgba(0,0,0,0.45)] transition"
+              className="group relative overflow-hidden rounded-2xl border border-border bg-[#1E293B] p-6 shadow-[0_24px_90px_rgba(0,0,0,0.45)] transition"
             >
               <div className="absolute inset-x-0 top-0 h-0.5 bg-transparent transition group-hover:bg-orange-400/90" />
               <div className="pointer-events-none absolute -right-10 -top-12 h-32 w-32 rounded-full bg-orange-500/10 blur-2xl opacity-0 transition group-hover:opacity-100" />
@@ -81,10 +81,10 @@ export function Services() {
                   <s.Icon className="h-6 w-6 text-orange-400" />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="font-heading text-lg font-extrabold text-white">
+                  <h3 className="font-heading text-lg font-extrabold text-text">
                     {s.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                  <p className="mt-2 text-sm leading-relaxed text-secondary">
                     {s.desc}
                   </p>
                 </div>

@@ -134,19 +134,19 @@ export function EmployeesPage() {
     <div className="space-y-6">
       <PortalCard className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <div className="font-heading text-2xl font-extrabold text-white">Employees</div>
-          <div className="mt-1 text-sm text-white/60">
+          <div className="font-heading text-2xl font-extrabold text-text">Employees</div>
+          <div className="mt-1 text-sm text-muted">
             Daily workforce management for sites, payroll, and compliance.
           </div>
         </div>
         <div className="flex flex-col gap-3 md:flex-row md:items-center">
           <div className="relative w-full md:w-[280px]">
-            <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/35" />
+            <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-text/35" />
             <input
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search employee, EMP-ID, project…"
-              className="w-full rounded-xl border border-white/10 bg-white/5 py-2.5 pl-11 pr-4 text-sm text-white placeholder:text-white/35 outline-none ring-orange-500/35 focus:ring-2"
+              className="w-full rounded-xl border border-border bg-card hover:bg-slate-50 py-2.5 pl-11 pr-4 text-sm text-text placeholder:text-text/35 outline-none ring-orange-500/35 focus:ring-2"
             />
           </div>
           <PortalButton onClick={openCreate}>
@@ -158,16 +158,16 @@ export function EmployeesPage() {
 
       <div className="grid gap-6 lg:grid-cols-3">
         <PortalCard>
-          <div className="text-sm font-semibold text-white/60">Total Employees</div>
-          <div className="mt-2 font-heading text-3xl font-extrabold text-white">{stats.total}</div>
+          <div className="text-sm font-semibold text-muted">Total Employees</div>
+          <div className="mt-2 font-heading text-3xl font-extrabold text-text">{stats.total}</div>
         </PortalCard>
         <PortalCard>
-          <div className="text-sm font-semibold text-white/60">On Site Today</div>
-          <div className="mt-2 font-heading text-3xl font-extrabold text-emerald-200">{stats.onSiteToday}</div>
+          <div className="text-sm font-semibold text-muted">On Site Today</div>
+          <div className="mt-2 font-heading text-3xl font-extrabold text-emerald-700">{stats.onSiteToday}</div>
         </PortalCard>
         <PortalCard>
-          <div className="text-sm font-semibold text-white/60">On Leave</div>
-          <div className="mt-2 font-heading text-3xl font-extrabold text-orange-200">{stats.onLeave}</div>
+          <div className="text-sm font-semibold text-muted">On Leave</div>
+          <div className="mt-2 font-heading text-3xl font-extrabold text-orange-700">{stats.onLeave}</div>
         </PortalCard>
       </div>
 
@@ -184,7 +184,7 @@ export function EmployeesPage() {
       ) : (
         <TableShell>
           <table className="w-full text-left text-sm">
-            <thead className="bg-white/5 text-xs font-bold text-white/60">
+            <thead className="bg-card hover:bg-slate-50 text-xs font-bold text-muted">
               <tr>
                 <th className="px-5 py-3">Avatar + Name</th>
                 <th className="px-5 py-3">Employee ID</th>
@@ -196,9 +196,9 @@ export function EmployeesPage() {
                 <th className="px-5 py-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/10">
+            <tbody className="divide-y divide-border">
               {rows.map((e) => (
-                <tr key={e.id} className="text-white/80">
+                <tr key={e.id} className="text-secondary">
                   <td className="px-5 py-4">
                     <div className="flex items-center gap-3">
                       <img
@@ -209,22 +209,22 @@ export function EmployeesPage() {
                           )}&background=0F172A&color=F8FAFC&size=64&bold=true`
                         }
                         alt={e.name}
-                        className="h-9 w-9 rounded-full border border-white/10 object-cover"
+                        className="h-9 w-9 rounded-full border border-border object-cover"
                       />
                       <div>
                         <Link
                           to={`/portal/employees/${e.id}`}
-                          className="font-extrabold text-white hover:text-orange-200"
+                          className="font-extrabold text-text hover:text-orange-700"
                         >
                           {e.name}
                         </Link>
-                        <div className="mt-1 text-xs font-semibold text-white/45">
+                        <div className="mt-1 text-xs font-semibold text-muted">
                           {e.email ?? '—'}
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td className="px-5 py-4 font-semibold text-white/85">{e.employeeId}</td>
+                  <td className="px-5 py-4 font-semibold text-text">{e.employeeId}</td>
                   <td className="px-5 py-4">{e.role}</td>
                   <td className="px-5 py-4">
                     {e.assignedProjectId
@@ -240,7 +240,7 @@ export function EmployeesPage() {
                     <div className="inline-flex items-center gap-1">
                       <Link
                         to={`/portal/employees/${e.id}`}
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 transition hover:bg-white/10"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card hover:bg-slate-50 text-secondary transition hover:bg-slate-100"
                         aria-label="View"
                       >
                         <Eye className="h-4 w-4" />
@@ -248,7 +248,7 @@ export function EmployeesPage() {
                       <button
                         type="button"
                         onClick={() => openEdit(e.id)}
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 transition hover:bg-white/10"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card hover:bg-slate-50 text-secondary transition hover:bg-slate-100"
                         aria-label="Edit"
                       >
                         <Pencil className="h-4 w-4" />
@@ -258,7 +258,7 @@ export function EmployeesPage() {
                         onClick={() => {
                           setDeleteId(e.id)
                         }}
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-red-200 transition hover:bg-white/10"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card hover:bg-slate-50 text-red-700 transition hover:bg-slate-100"
                         aria-label="Delete"
                       >
                         <Trash2 className="h-4 w-4" />
@@ -289,11 +289,11 @@ export function EmployeesPage() {
       >
         <div className="flex items-center gap-4">
           <div className="relative">
-            <div className="h-20 w-20 overflow-hidden rounded-full border border-white/10 bg-white/5">
+            <div className="h-20 w-20 overflow-hidden rounded-full border border-border bg-card hover:bg-slate-50">
               {photo ? (
                 <img src={photo} alt="Employee" className="h-full w-full object-cover" />
               ) : (
-                <div className="flex h-full w-full items-center justify-center text-white/35">
+                <div className="flex h-full w-full items-center justify-center text-text/35">
                   <Upload className="h-6 w-6" />
                 </div>
               )}
@@ -301,7 +301,7 @@ export function EmployeesPage() {
             <button
               type="button"
               onClick={() => fileRef.current?.click()}
-              className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-white/75 hover:bg-white/10"
+              className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-full border border-border bg-card hover:bg-slate-50 px-3 py-1 text-xs font-semibold text-text/75 hover:bg-slate-100"
             >
               Upload
             </button>
@@ -319,15 +319,15 @@ export function EmployeesPage() {
               }}
             />
           </div>
-          <div className="text-sm text-white/60">
+          <div className="text-sm text-muted">
             Photo upload UI (stored locally).
           </div>
         </div>
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           <div className={touched && !name.trim() ? 'rounded-2xl border border-red-500/40 p-3' : ''}>
-            <label className="text-sm font-semibold text-white/70">Full Name*</label>
-            <input value={name} onChange={(e) => setName(e.target.value)} className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none ring-orange-500/35 focus:ring-2" />
+            <label className="text-sm font-semibold text-muted">Full Name*</label>
+            <input value={name} onChange={(e) => setName(e.target.value)} className="mt-2 w-full rounded-xl border border-border bg-card hover:bg-slate-50 px-4 py-3 text-sm text-text outline-none ring-orange-500/35 focus:ring-2" />
           </div>
           <div className={touched && !role ? 'rounded-2xl border border-red-500/40 p-3' : ''}>
             <Select
@@ -346,16 +346,16 @@ export function EmployeesPage() {
             />
           </div>
           <div className={touched && !phone.trim() ? 'rounded-2xl border border-red-500/40 p-3' : ''}>
-            <label className="text-sm font-semibold text-white/70">Phone*</label>
-            <input value={phone} onChange={(e) => setPhone(e.target.value)} className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none ring-orange-500/35 focus:ring-2" />
+            <label className="text-sm font-semibold text-muted">Phone*</label>
+            <input value={phone} onChange={(e) => setPhone(e.target.value)} className="mt-2 w-full rounded-xl border border-border bg-card hover:bg-slate-50 px-4 py-3 text-sm text-text outline-none ring-orange-500/35 focus:ring-2" />
           </div>
           <div>
-            <label className="text-sm font-semibold text-white/70">Email</label>
-            <input value={email} onChange={(e) => setEmail(e.target.value)} className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none ring-orange-500/35 focus:ring-2" />
+            <label className="text-sm font-semibold text-muted">Email</label>
+            <input value={email} onChange={(e) => setEmail(e.target.value)} className="mt-2 w-full rounded-xl border border-border bg-card hover:bg-slate-50 px-4 py-3 text-sm text-text outline-none ring-orange-500/35 focus:ring-2" />
           </div>
           <div>
-            <label className="text-sm font-semibold text-white/70">Aadhar Number</label>
-            <input value={aadhar} onChange={(e) => setAadhar(e.target.value)} className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none ring-orange-500/35 focus:ring-2" />
+            <label className="text-sm font-semibold text-muted">Aadhar Number</label>
+            <input value={aadhar} onChange={(e) => setAadhar(e.target.value)} className="mt-2 w-full rounded-xl border border-border bg-card hover:bg-slate-50 px-4 py-3 text-sm text-text outline-none ring-orange-500/35 focus:ring-2" />
           </div>
           <div className={touched && !salaryType ? 'rounded-2xl border border-red-500/40 p-3' : ''}>
             <Select
@@ -369,17 +369,17 @@ export function EmployeesPage() {
             />
           </div>
           <div className={touched && Number(salaryAmount) <= 0 ? 'rounded-2xl border border-red-500/40 p-3' : ''}>
-            <label className="text-sm font-semibold text-white/70">Salary Amount*</label>
-            <input value={salaryAmount} onChange={(e) => setSalaryAmount(e.target.value)} type="number" className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none ring-orange-500/35 focus:ring-2" />
+            <label className="text-sm font-semibold text-muted">Salary Amount*</label>
+            <input value={salaryAmount} onChange={(e) => setSalaryAmount(e.target.value)} type="number" className="mt-2 w-full rounded-xl border border-border bg-card hover:bg-slate-50 px-4 py-3 text-sm text-text outline-none ring-orange-500/35 focus:ring-2" />
           </div>
           <div className={touched && !joinDate ? 'rounded-2xl border border-red-500/40 p-3' : ''}>
-            <label className="text-sm font-semibold text-white/70">Join Date*</label>
-            <input value={joinDate} onChange={(e) => setJoinDate(e.target.value)} type="date" className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none ring-orange-500/35 focus:ring-2" />
+            <label className="text-sm font-semibold text-muted">Join Date*</label>
+            <input value={joinDate} onChange={(e) => setJoinDate(e.target.value)} type="date" className="mt-2 w-full rounded-xl border border-border bg-card hover:bg-slate-50 px-4 py-3 text-sm text-text outline-none ring-orange-500/35 focus:ring-2" />
           </div>
           <Select label="Assign Project" value={assignedProjectId} onChange={setAssignedProjectId} options={projectOptions} />
           <div>
-            <label className="text-sm font-semibold text-white/70">Emergency Contact</label>
-            <input value={emergencyContact} onChange={(e) => setEmergencyContact(e.target.value)} className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none ring-orange-500/35 focus:ring-2" />
+            <label className="text-sm font-semibold text-muted">Emergency Contact</label>
+            <input value={emergencyContact} onChange={(e) => setEmergencyContact(e.target.value)} className="mt-2 w-full rounded-xl border border-border bg-card hover:bg-slate-50 px-4 py-3 text-sm text-text outline-none ring-orange-500/35 focus:ring-2" />
           </div>
           <Select
             label="Status"

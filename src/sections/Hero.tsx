@@ -74,18 +74,18 @@ export function Hero() {
                   transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 >
                   {l.kind === 'kicker' && (
-                    <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold tracking-wide text-slate-200 backdrop-blur">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card hover:bg-slate-50 px-4 py-2 text-xs font-semibold tracking-wide text-text backdrop-blur">
                       <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
                       {l.text}
                     </div>
                   )}
                   {l.kind === 'title' && (
-                    <h1 className="mt-6 whitespace-pre-line font-heading text-5xl font-extrabold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
+                    <h1 className="mt-6 whitespace-pre-line font-heading text-5xl font-extrabold leading-[1.02] tracking-tight text-text sm:text-6xl lg:text-7xl">
                       {l.text}
                     </h1>
                   )}
                   {l.kind === 'body' && (
-                    <p className="mt-6 text-base leading-relaxed text-slate-200/90 sm:text-lg">
+                    <p className="mt-6 text-base leading-relaxed text-text/90 sm:text-lg">
                       {l.text}
                     </p>
                   )}
@@ -107,7 +107,7 @@ export function Hero() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                 <a
                   href="#contact"
-                  className="btn btn-outline px-7 border-white/25 bg-white/5 text-white/90 backdrop-blur hover:bg-white/10 hover:text-white"
+                  className="btn btn-outline px-7 border-white/25 bg-card hover:bg-slate-50 text-secondary backdrop-blur hover:bg-slate-100 hover:text-text"
                 >
                   Get a Free Quote
                 </a>
@@ -121,7 +121,7 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-            className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 p-3 text-white/80 backdrop-blur"
+            className="inline-flex items-center justify-center rounded-full border border-border bg-card hover:bg-slate-50 p-3 text-secondary backdrop-blur"
           >
             <ChevronDown className="h-5 w-5" />
           </motion.div>

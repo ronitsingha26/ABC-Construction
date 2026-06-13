@@ -24,6 +24,12 @@ const EmployeesPage = lazy(() =>
 const EmployeeDetailPage = lazy(() =>
   import('./portal/pages/EmployeeDetailPage.tsx').then((m) => ({ default: m.EmployeeDetailPage })),
 )
+const AttendancePage = lazy(() =>
+  import('./portal/pages/AttendancePage.tsx').then((m) => ({ default: m.AttendancePage })),
+)
+const EmployeeDashboard = lazy(() =>
+  import('./portal/pages/EmployeeDashboard.tsx').then((m) => ({ default: m.EmployeeDashboard })),
+)
 const PayrollPage = lazy(() =>
   import('./portal/pages/PayrollPage.tsx').then((m) => ({ default: m.PayrollPage })),
 )
@@ -116,6 +122,22 @@ function App() {
                 element={
                   <RequireRole roles={['Owner', 'HR', 'Project Manager']}>
                     <EmployeeDetailPage />
+                  </RequireRole>
+                }
+              />
+              <Route
+                path="attendance"
+                element={
+                  <RequireRole roles={['Owner', 'HR', 'Project Manager', 'Site Engineer']}>
+                    <AttendancePage />
+                  </RequireRole>
+                }
+              />
+              <Route
+                path="employee-dashboard"
+                element={
+                  <RequireRole roles={['Employee']}>
+                    <EmployeeDashboard />
                   </RequireRole>
                 }
               />

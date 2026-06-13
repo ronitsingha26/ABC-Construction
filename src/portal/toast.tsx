@@ -62,8 +62,8 @@ export function PortalToastProvider({ children }: { children: React.ReactNode })
                 <div className="flex items-start gap-3">
                   <div className={['mt-1 h-2.5 w-2.5 rounded-full', cls.dot].join(' ')} />
                   <div className="flex-1">
-                    <div className="text-sm font-extrabold text-white">{t.title}</div>
-                    {t.message && <div className="mt-1 text-xs font-semibold text-white/70">{t.message}</div>}
+                    <div className="text-sm font-extrabold text-text">{t.title}</div>
+                    {t.message && <div className="mt-1 text-xs font-semibold text-muted">{t.message}</div>}
                   </div>
                 </div>
               </motion.div>

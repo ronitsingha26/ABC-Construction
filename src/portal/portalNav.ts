@@ -8,6 +8,7 @@ import {
   Settings,
   Users,
   Wallet,
+  CalendarDays,
 } from 'lucide-react'
 import type { PortalRole } from './auth'
 
@@ -26,6 +27,12 @@ export const portalNav: PortalNavItem[] = [
     roles: ['Owner', 'Project Manager', 'Site Engineer', 'Accounts', 'HR'],
   },
   {
+    label: 'My Portal',
+    to: '/portal/employee-dashboard',
+    Icon: Activity,
+    roles: ['Employee'],
+  },
+  {
     label: 'Projects',
     to: '/portal/projects',
     Icon: HardHat,
@@ -36,6 +43,12 @@ export const portalNav: PortalNavItem[] = [
     to: '/portal/employees',
     Icon: Users,
     roles: ['Owner', 'HR', 'Project Manager'],
+  },
+  {
+    label: 'Attendance & Leaves',
+    to: '/portal/attendance',
+    Icon: CalendarDays,
+    roles: ['Owner', 'HR', 'Project Manager', 'Site Engineer'],
   },
   {
     label: 'Payroll',

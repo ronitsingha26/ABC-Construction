@@ -2,18 +2,18 @@ import { motion } from 'framer-motion'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import heroBg from '../assets/hero-bg.png'
-import { ThemeLock } from '../components/ThemeLock'
 import { usePortalAuth } from '../portal/auth'
+import { usePortalStore } from '../portal/store'
 
 export function LoginPage() {
   const navigate = useNavigate()
   const { login } = usePortalAuth()
+  const { employees } = usePortalStore()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   return (
     <div className="min-h-screen bg-bg">
-      <ThemeLock theme="dark" />
       <div className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0">
           <motion.img
@@ -46,7 +46,7 @@ export function LoginPage() {
             transition={{ duration: 0.5, ease: 'easeOut' }}
             className="w-full max-w-md"
           >
-            <div className="card border-white/15 bg-slate-950/55 p-8 backdrop-blur">
+            <div className="card border-border bg-card p-8 backdrop-blur">
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-xs font-semibold tracking-widest text-orange-200/90">
@@ -58,7 +58,7 @@ export function LoginPage() {
                 </div>
                 <Link
                   to="/"
-                  className="text-sm font-semibold text-white/80 hover:text-white"
+                  className="text-sm font-semibold text-secondary hover:text-text"
                 >
                   Back to site
                 </Link>
@@ -69,12 +69,22 @@ export function LoginPage() {
                 onSubmit={(e) => {
                   e.preventDefault()
                   if (!email.trim() || password.trim().length < 2) return
-                  login({ email, password })
-                  navigate('/portal/dashboard')
+                  
+                  const emp = employees.find(
+                    (em) => em.email?.toLowerCase().trim() === email.toLowerCase().trim()
+                  )
+                  
+                  if (emp) {
+                    login({ email: emp.email || email, name: emp.name, role: 'Employee' })
+                    navigate('/portal/employee-dashboard')
+                  } else {
+                    login({ email, name: 'Rajesh Sharma', role: 'Owner' })
+                    navigate('/portal/dashboard')
+                  }
                 }}
               >
                 <div>
-                  <label className="text-sm font-semibold text-white/80">
+                  <label className="text-sm font-semibold text-secondary">
                     Email
                   </label>
                   <input
@@ -82,11 +92,11 @@ export function LoginPage() {
                     placeholder="you@company.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 outline-none ring-orange-500/40 focus:ring-2"
+                    className="mt-2 w-full rounded-xl border border-border bg-card hover:bg-white/5 px-4 py-3 text-text placeholder:text-muted outline-none ring-orange-500/40 focus:ring-2"
                   />
                 </div>
                 <div>
-                  <label className="text-sm font-semibold text-white/80">
+                  <label className="text-sm font-semibold text-secondary">
                     Password
                   </label>
                   <input
@@ -94,7 +104,7 @@ export function LoginPage() {
                     placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 outline-none ring-orange-500/40 focus:ring-2"
+                    className="mt-2 w-full rounded-xl border border-border bg-card hover:bg-white/5 px-4 py-3 text-text placeholder:text-muted outline-none ring-orange-500/40 focus:ring-2"
                   />
                 </div>
 
@@ -105,7 +115,7 @@ export function LoginPage() {
                   Login
                 </button>
 
-                <p className="pt-1 text-center text-xs text-white/60">
+                <p className="pt-1 text-center text-xs text-muted">
                   Powered by ABC Construction Portal
                 </p>
               </form>

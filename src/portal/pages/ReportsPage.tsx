@@ -170,8 +170,8 @@ export function ReportsPage() {
     <div className="space-y-6">
       <PortalCard className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <div className="font-heading text-2xl font-extrabold text-white">Reports</div>
-          <div className="mt-1 text-sm text-white/60">Operational analytics and exports.</div>
+          <div className="font-heading text-2xl font-extrabold text-text">Reports</div>
+          <div className="mt-1 text-sm text-muted">Operational analytics and exports.</div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <PortalButton
@@ -202,13 +202,13 @@ export function ReportsPage() {
             <PortalCard
               className={[
                 'transition',
-                active === r.id ? 'border-orange-400/30 bg-orange-500/5' : 'hover:bg-white/5',
+                active === r.id ? 'border-orange-400/30 bg-orange-500/5' : 'hover:bg-card hover:bg-slate-50',
               ].join(' ')}
             >
-              <div className="font-heading text-lg font-extrabold text-white">{r.title}</div>
-              <div className="mt-1 text-sm text-white/60">{r.subtitle}</div>
-              <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-white/55">
-                <TrendingUp className="h-4 w-4 text-emerald-300" />
+              <div className="font-heading text-lg font-extrabold text-text">{r.title}</div>
+              <div className="mt-1 text-sm text-muted">{r.subtitle}</div>
+              <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-muted">
+                <TrendingUp className="h-4 w-4 text-emerald-600" />
                 Click to expand
               </div>
             </PortalCard>
@@ -219,30 +219,30 @@ export function ReportsPage() {
       <PortalCard>
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <div className="font-heading text-lg font-extrabold text-white">
+            <div className="font-heading text-lg font-extrabold text-text">
               {reportCards.find((r) => r.id === active)?.title}
             </div>
-            <div className="mt-1 text-xs font-semibold text-white/55">
+            <div className="mt-1 text-xs font-semibold text-muted">
               Date range is a demo filter (From / To).
             </div>
           </div>
           <div className="flex flex-wrap items-end gap-3">
             <div className="grid gap-1">
-              <div className="text-xs font-semibold text-white/55">From</div>
+              <div className="text-xs font-semibold text-muted">From</div>
               <input
                 type="date"
                 value={from}
                 onChange={(e) => setFrom(e.target.value)}
-                className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white outline-none ring-orange-500/35 focus:ring-2"
+                className="rounded-xl border border-border bg-card hover:bg-slate-50 px-4 py-2 text-sm text-text outline-none ring-orange-500/35 focus:ring-2"
               />
             </div>
             <div className="grid gap-1">
-              <div className="text-xs font-semibold text-white/55">To</div>
+              <div className="text-xs font-semibold text-muted">To</div>
               <input
                 type="date"
                 value={to}
                 onChange={(e) => setTo(e.target.value)}
-                className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white outline-none ring-orange-500/35 focus:ring-2"
+                className="rounded-xl border border-border bg-card hover:bg-slate-50 px-4 py-2 text-sm text-text outline-none ring-orange-500/35 focus:ring-2"
               />
             </div>
           </div>
@@ -253,7 +253,7 @@ export function ReportsPage() {
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={progressData} layout="vertical" margin={{ left: 30 }}>
-                  <CartesianGrid stroke="rgba(255,255,255,0.08)" horizontal={false} />
+                  <CartesianGrid stroke="rgba(0,0,0,0.05)" horizontal={false} />
                   <XAxis type="number" tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 12 }} />
                   <YAxis type="category" dataKey="name" width={160} tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 12 }} />
                   <Tooltip
@@ -275,7 +275,7 @@ export function ReportsPage() {
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={monthlyRevExp}>
-                  <CartesianGrid stroke="rgba(255,255,255,0.08)" vertical={false} />
+                  <CartesianGrid stroke="rgba(0,0,0,0.05)" vertical={false} />
                   <XAxis dataKey="name" tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 12 }} />
                   <YAxis tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 12 }} />
                   <Tooltip
@@ -297,8 +297,8 @@ export function ReportsPage() {
           {active === 'attendance' && (
             <div className="grid gap-6 lg:grid-cols-5">
               <PortalCard className="lg:col-span-2">
-                <div className="font-heading text-lg font-extrabold text-white">Attendance Split</div>
-                <div className="mt-1 text-xs font-semibold text-white/55">Demo snapshot</div>
+                <div className="font-heading text-lg font-extrabold text-text">Attendance Split</div>
+                <div className="mt-1 text-xs font-semibold text-muted">Demo snapshot</div>
                 <div className="mt-4 h-64">
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
@@ -320,22 +320,22 @@ export function ReportsPage() {
                 </div>
               </PortalCard>
               <PortalCard className="lg:col-span-3">
-                <div className="font-heading text-lg font-extrabold text-white">Employee Snapshot</div>
-                <div className="mt-1 text-xs font-semibold text-white/55">First 12 employees</div>
+                <div className="font-heading text-lg font-extrabold text-text">Employee Snapshot</div>
+                <div className="mt-1 text-xs font-semibold text-muted">First 12 employees</div>
                 <div className="mt-4">
                   <TableShell>
                     <table className="w-full text-left text-sm">
-                      <thead className="bg-white/5 text-xs font-bold text-white/60">
+                      <thead className="bg-card hover:bg-slate-50 text-xs font-bold text-muted">
                         <tr>
                           <th className="px-5 py-3">Employee</th>
                           <th className="px-5 py-3">Role</th>
                           <th className="px-5 py-3">Status</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-white/10">
+                      <tbody className="divide-y divide-border">
                         {attendance.table.map((r) => (
-                          <tr key={r.employee} className="text-white/80">
-                            <td className="px-5 py-4 font-semibold text-white">{r.employee}</td>
+                          <tr key={r.employee} className="text-secondary">
+                            <td className="px-5 py-4 font-semibold text-text">{r.employee}</td>
                             <td className="px-5 py-4">{r.role}</td>
                             <td className="px-5 py-4">{r.status}</td>
                           </tr>
@@ -355,7 +355,7 @@ export function ReportsPage() {
               <div className="h-80">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={materialConsumption}>
-                    <CartesianGrid stroke="rgba(255,255,255,0.08)" vertical={false} />
+                    <CartesianGrid stroke="rgba(0,0,0,0.05)" vertical={false} />
                     <XAxis dataKey="cat" tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 12 }} />
                     <YAxis tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 12 }} />
                     <Tooltip
@@ -377,7 +377,7 @@ export function ReportsPage() {
             <div>
               <TableShell>
                 <table className="w-full text-left text-sm">
-                  <thead className="bg-white/5 text-xs font-bold text-white/60">
+                  <thead className="bg-card hover:bg-slate-50 text-xs font-bold text-muted">
                     <tr>
                       <th className="px-5 py-3">Vendor</th>
                       <th className="px-5 py-3">Category</th>
@@ -386,16 +386,16 @@ export function ReportsPage() {
                       <th className="px-5 py-3 text-right">Pending</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-white/10">
+                  <tbody className="divide-y divide-border">
                     {vendorPayments.map((v) => (
-                      <tr key={v.vendor} className="text-white/80">
-                        <td className="px-5 py-4 font-semibold text-white">{v.vendor}</td>
+                      <tr key={v.vendor} className="text-secondary">
+                        <td className="px-5 py-4 font-semibold text-text">{v.vendor}</td>
                         <td className="px-5 py-4">{v.category}</td>
                         <td className="px-5 py-4">{v.city}</td>
-                        <td className="px-5 py-4 text-right font-extrabold text-white">
+                        <td className="px-5 py-4 text-right font-extrabold text-text">
                           ₹{new Intl.NumberFormat('en-IN', { maximumFractionDigits: 0 }).format(v.totalPaidRupees)}
                         </td>
-                        <td className="px-5 py-4 text-right font-extrabold text-orange-200">
+                        <td className="px-5 py-4 text-right font-extrabold text-orange-700">
                           ₹{new Intl.NumberFormat('en-IN', { maximumFractionDigits: 0 }).format(v.pendingRupees)}
                         </td>
                       </tr>
